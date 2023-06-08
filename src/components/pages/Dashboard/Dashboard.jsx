@@ -2,13 +2,15 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import useUser from '../../../hooks/useUser';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Dashboard = () => {
 
 
     const { user } = useContext(AuthContext)
 
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
+    console.log(isAdmin.admin);
 
 
 
@@ -50,7 +52,7 @@ const Dashboard = () => {
 
                         <>
                             {
-                                isAdmin ? <> <li><Link to="/dashboard/myClass">Manage Class</Link></li>
+                                isAdmin.admin ? <> <li><Link to="/dashboard/myClass">Manage Class</Link></li>
                                     <li><Link to="/dashboard/manageUsers">Manage Users</Link></li></> : <> <li><Link to="/dashboard/myClass">My selected  class</Link></li>
                                     <li><Link>My Enrolled Class</Link></li></>
                             }
