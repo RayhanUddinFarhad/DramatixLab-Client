@@ -8,6 +8,8 @@ import ErrorPage from '../components/shared/ErrorPage';
 import Home from '../components/pages/Home/Home';
 import LogIn from '../components/pages/Authontication/LogIn';
 import Register from '../components/pages/Authontication/Register';
+import Instructors from '../components/pages/Instructors/Instructors';
+import AllLabClasses from '../components/pages/LabClasses/AllLabClasses';
 
   export const router = createBrowserRouter([
     {
@@ -32,7 +34,21 @@ import Register from '../components/pages/Authontication/Register';
 
         path : "/register",
         element : <Register></Register>
-       }
+       }, 
+       {
+
+        path : "/instructor",
+        element : <Instructors></Instructors>
+       },
+
+       {
+        path : "/classes",
+        element : <AllLabClasses></AllLabClasses>
+       },
+
+       
+
+
       ]
     },
 
