@@ -4,32 +4,17 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import axios from 'axios';
+import GoogleLogIn from './GoogleLogIn';
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [error, errorMessage] = useState('')
-    const {user, signUp, googleLogin} = useContext(AuthContext)
+    const { user, signUp, googleLogin } = useContext(AuthContext)
     console.log(user);
 
 
-    const handleGoogleLogin = () => { 
-
-
-
-
-        googleLogin ()
-        .then (res => {
-
-            const loggedInUser = res.user
-            console.log(loggedInUser);
-        })
-
-        .catch (err => { 
-
-            console.log(err);
-        })
-    }
-
+   
 
     const onSubmit = data => {
 
@@ -42,7 +27,7 @@ const Register = () => {
         if (data.password !== data.ConfirmPassword) {
 
 
-            return errorMessage ('Passwords do not match')
+            return errorMessage('Passwords do not match')
 
 
 
@@ -52,29 +37,52 @@ const Register = () => {
 
 
 
-        const {name, Email, password, photo } = data
+        const { name, Email, password, photo } = data
 
 
-        console.log( name, Email, password, photo)
+        console.log(name, Email, password, photo)
 
 
-        signUp (Email, password)
-        .then (res => {
+        signUp(Email, password)
+            .then(res => {
 
-            const registered = res.user
+                const registered = res.user
 
 
-            updateProfile (registered, {
+                updateProfile(registered, {
 
-                displayName : name,
-                photoURL : photo
+                    displayName: name,
+                    photoURL: photo
+                })
+                console.log(registered);
+
+
+
+                const data = {
+                    name: name, image: photo, email: registered.email,
+                    role : 'user'
+                }
+
+
+                axios.post('http://localhost:8000/users', data)
+                    .then(function (response) {
+                        console.log(response);
+                        reset()
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             })
-            console.log(registered);
-        })
-        .catch (err => { 
 
-            console.log(err);
-        })
+            .catch(err => {
+
+                console.log(err);
+        
+            })
+            .catch(err => {
+
+                console.log(err);
+            })
 
 
 
@@ -170,7 +178,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input {...register("photo")} type="text" placeholder='URL'  className="input input-bordered w-full max-w-xs" />
+                                <input {...register("photo")} type="text" placeholder='URL' className="input input-bordered w-full max-w-xs" />
                             </div>
                             <div className="form-control mt-6">
                                 <button className="button-primary">Create an account</button>
@@ -178,8 +186,9 @@ const Register = () => {
 
                         </form>
 
+                        <GoogleLogIn></GoogleLogIn>
 
-                        <h1 onClick={handleGoogleLogin} className='flex border p-3 items-center justify-center '><FaGoogle className='mr-2'/> Continue with google</h1>
+
                         <p>Already have an account? <Link to="/logIn" className='btn-link'>Log In Now</Link></p>
 
                     </div>

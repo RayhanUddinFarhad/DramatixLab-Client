@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import GoogleLogIn from './GoogleLogIn';
 
 const LogIn = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -13,23 +14,7 @@ const LogIn = () => {
     const [show, setShowing] = useState(true)
 
 
-    const handleGoogleLogin = () => { 
-
-
-
-
-        googleLogin ()
-        .then (res => {
-
-            const loggedInUser = res.user
-            console.log(loggedInUser);
-        })
-
-        .catch (err => { 
-
-            console.log(err);
-        })
-    }
+   
 
     const onSubmit = data => {
         
@@ -110,7 +95,7 @@ const LogIn = () => {
                         <div className="form-control mt-6">
                             <button className="button-primary">Login</button>
                         </div>
-                        <h1 onClick={handleGoogleLogin} className='flex border p-3 items-center justify-center '><FaGoogle className='mr-2'/> Continue with google</h1>
+                        <GoogleLogIn></GoogleLogIn>
 
 
                         <p>New to DramatixLab? <Link to = "/register" className='btn-link'>Register Now</Link></p>
