@@ -13,6 +13,7 @@ import AllLabClasses from '../components/pages/LabClasses/AllLabClasses';
 import Dashboard from '../components/pages/Dashboard/Dashboard';
 import MyBooking from '../components/pages/Dashboard/UserDashboard/MyBooking';
 import ManageUsers from '../components/pages/Dashboard/Admindashboard/ManageUsers';
+import AddClass from '../components/pages/Dashboard/InstructorDashboard/AddClass';
 
   export const router = createBrowserRouter([
     {
@@ -64,6 +65,12 @@ import ManageUsers from '../components/pages/Dashboard/Admindashboard/ManageUser
 
             path : 'manageUsers',
             element : <ManageUsers></ManageUsers>
+          }, 
+
+          {
+            path : 'addClass',
+            element : <AddClass></AddClass>
+
           }
         ]
        }

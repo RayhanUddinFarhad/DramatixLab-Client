@@ -28,6 +28,25 @@ const ManageUsers = () => {
 
      }
 
+
+
+
+     const handleMakeInstructor = (id) => {
+
+        fetch (`http://localhost:8000/users/instructor/${id}`, {
+
+        method : 'PATCH'
+        })
+        .then (response => response.json())
+        .then (data => console.log(data))
+
+
+
+
+
+        
+      }
+
     return (
         <div>
 
@@ -77,7 +96,7 @@ const ManageUsers = () => {
                                         <td>{userInfo.role}</td>
                                         <th>
                                             <button onClick={() => handleMakeAdmin (userInfo._id)} className="button-primary">Make Admin</button>
-                                            <button className="button-primary">Make Instructor</button>
+                                            <button onClick={() => handleMakeInstructor(userInfo._id)} className="button-primary">Make Instructor</button>
                                         </th>
                                     </tr>
                                 )

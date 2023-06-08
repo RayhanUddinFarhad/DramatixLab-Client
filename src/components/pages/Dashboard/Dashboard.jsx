@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import useUser from '../../../hooks/useUser';
 import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const Dashboard = () => {
 
@@ -10,7 +11,9 @@ const Dashboard = () => {
     const { user } = useContext(AuthContext)
 
     const [isAdmin] = useAdmin()
-    console.log(isAdmin.admin);
+    const [Isinstructor] = useInstructor()
+    console.log(Isinstructor, isAdmin);
+
 
 
 
@@ -32,7 +35,7 @@ const Dashboard = () => {
                 <div className="drawer-side ">
                     <div >
 
-                        <img className='object-contain  border-2 border-red-300 rounded-full mx-auto' src={user?.photoURL} alt="" />
+                        <img className='object-contain  border-2 border-red-300 rounded-full mx-auto w-52' src={user?.photoURL} alt="" />
                         <h1 className='text-center text-xl font-bold'>{user?.displayName}</h1>
 
                         <h1 className='text-center text-xl font-bold'>{user?.email}</h1>
@@ -52,10 +55,24 @@ const Dashboard = () => {
 
                         <>
                             {
-                                isAdmin.admin ? <> <li><Link to="/dashboard/myClass">Manage Class</Link></li>
-                                    <li><Link to="/dashboard/manageUsers">Manage Users</Link></li></> : <> <li><Link to="/dashboard/myClass">My selected  class</Link></li>
-                                    <li><Link>My Enrolled Class</Link></li></>
+                                isAdmin?.admin ? (
+                                    <>
+                                        <li><Link to="/dashboard/myClass">Manage Class</Link></li>
+                                        <li><Link to="/dashboard/manageUsers">Manage Users</Link></li>
+                                    </>
+                                ) : Isinstructor ? (
+                                    <>
+                                        <li><Link to="/dashboard/addClass">Add A class</Link></li>
+                                        <li><Link to="/dashboard/myClass">My Classes</Link></li>
+                                    </>
+                                ) : (
+                                    <>
+                                        <li><Link to="/dashboard/myClass">My Selected Class</Link></li>
+                                        <li><Link to="/dashboard/myEnrolledClass">My Enrolled Class</Link></li>
+                                    </>
+                                )
                             }
+
 
                         </>
                     </ul>
