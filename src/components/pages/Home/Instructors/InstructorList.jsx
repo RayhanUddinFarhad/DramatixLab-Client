@@ -8,6 +8,7 @@ const InstructorList = ({data}) => {
           <h2 className="card-title">{data.name}</h2>
           <p> Topic: {data.topic}</p>
           <p>Students : {data.students}</p>
+          <p>Email : {data.email}</p>
           
         </div>
       </div>
