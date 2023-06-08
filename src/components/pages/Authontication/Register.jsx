@@ -60,7 +60,7 @@ const Register = () => {
 
                 const data = {
                     name: name, image: photo, email: registered.email,
-                    role : 'user'
+                    role : 'student'
                 }
 
 

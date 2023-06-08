@@ -12,6 +12,7 @@ import Instructors from '../components/pages/Instructors/Instructors';
 import AllLabClasses from '../components/pages/LabClasses/AllLabClasses';
 import Dashboard from '../components/pages/Dashboard/Dashboard';
 import MyBooking from '../components/pages/Dashboard/UserDashboard/MyBooking';
+import ManageUsers from '../components/pages/Dashboard/Admindashboard/ManageUsers';
 
   export const router = createBrowserRouter([
     {
@@ -57,6 +58,12 @@ import MyBooking from '../components/pages/Dashboard/UserDashboard/MyBooking';
           {
             path  : 'myClass',
             element : <MyBooking></MyBooking>
+          },
+
+          {
+
+            path : 'manageUsers',
+            element : <ManageUsers></ManageUsers>
           }
         ]
        }

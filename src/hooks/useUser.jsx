@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const useUser = () => {
-    const { isLoading, error, data : user = [], refetch } = useQuery({
+    const { isLoading, error, data : userOne = [], refetch } = useQuery({
         queryKey: ['user'],
         queryFn: () =>
           fetch('http://localhost:8000/users').then(
@@ -11,7 +11,7 @@ const useUser = () => {
       })
 
 
-      return [user, refetch]
+      return [userOne, refetch]
 };
 
 export default useUser;
