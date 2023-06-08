@@ -10,6 +10,8 @@ import LogIn from '../components/pages/Authontication/LogIn';
 import Register from '../components/pages/Authontication/Register';
 import Instructors from '../components/pages/Instructors/Instructors';
 import AllLabClasses from '../components/pages/LabClasses/AllLabClasses';
+import Dashboard from '../components/pages/Dashboard/Dashboard';
+import MyBooking from '../components/pages/Dashboard/UserDashboard/MyBooking';
 
   export const router = createBrowserRouter([
     {
@@ -45,6 +47,19 @@ import AllLabClasses from '../components/pages/LabClasses/AllLabClasses';
         path : "/classes",
         element : <AllLabClasses></AllLabClasses>
        },
+
+       {
+        path : "/dashboard",
+        element : <Dashboard></Dashboard>,
+
+        children : [
+
+          {
+            path  : 'myClass',
+            element : <MyBooking></MyBooking>
+          }
+        ]
+       }
 
        
 
