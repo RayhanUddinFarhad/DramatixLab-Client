@@ -15,6 +15,7 @@ import MyBooking from '../components/pages/Dashboard/UserDashboard/MyBooking';
 import ManageUsers from '../components/pages/Dashboard/Admindashboard/ManageUsers';
 import AddClass from '../components/pages/Dashboard/InstructorDashboard/AddClass';
 import ManageClass from '../components/pages/Dashboard/Admindashboard/ManageClass';
+import InstructorMyClass from '../components/pages/Dashboard/InstructorDashboard/InstructorMyClass';
 
   export const router = createBrowserRouter([
     {
@@ -78,6 +79,10 @@ import ManageClass from '../components/pages/Dashboard/Admindashboard/ManageClas
 
             path : 'manageClasses',
             element : <ManageClass></ManageClass>
+          },
+          {
+            path : 'instructorClass',
+            element : <InstructorMyClass></InstructorMyClass>
           }
         ]
        }

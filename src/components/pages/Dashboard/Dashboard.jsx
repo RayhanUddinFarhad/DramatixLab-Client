@@ -60,10 +60,10 @@ const Dashboard = () => {
                                         <li><Link to="/dashboard/manageClasses">Manage Class</Link></li>
                                         <li><Link to="/dashboard/manageUsers">Manage Users</Link></li>
                                     </>
-                                ) : Isinstructor ? (
+                                ) : Isinstructor?.instructor ? (
                                     <>
                                         <li><Link to="/dashboard/addClass">Add A class</Link></li>
-                                        <li><Link to="/dashboard/myClass">My Classes</Link></li>
+                                        <li><Link to="/dashboard/instructorClass">My Classes</Link></li>
                                     </>
                                 ) : (
                                     <>

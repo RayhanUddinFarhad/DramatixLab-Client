@@ -7,18 +7,18 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
 
 
-    const handleLogOut = () => { 
+    const handleLogOut = () => {
 
 
         logOut()
-        .then (res => {
+            .then(res => {
 
-        })
+            })
 
-        .catch (err => {
+            .catch(err => {
 
-            console.log(err);
-         })
+                console.log(err);
+            })
 
 
 
@@ -50,9 +50,14 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-bold text-white">
                         <li><Link>Home</Link></li>
-                        <li><Link to = "/instructor">Instructor</Link></li>
-                        <li><Link to = "/classes">Classes</Link></li>
-                        <li><Link to = "/dashboard">Dashboard</Link></li>
+                        <li><Link to="/instructor">Instructor</Link></li>
+                        <li><Link to="/classes">Classes</Link></li>
+
+                        {
+
+                            user && <li><Link to="/dashboard">Dashboard</Link></li>
+
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end text-white">
@@ -60,7 +65,7 @@ const Navbar = () => {
 
                     <div className='w-10 rounded-full'>
 
-                    <img className='rounded-full' src={user?.photoURL} alt="" />
+                        <img className='rounded-full' src={user?.photoURL} alt="" />
 
                     </div>
                     {
