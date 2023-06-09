@@ -5,14 +5,14 @@ const useHandleApproved = () => {
     const { isLoading, error, data : classInfo , refetch } = useQuery({
         queryKey: ['classInfo' ],
         queryFn: () =>
-          fetch(`http://localhost:8000/classes`)
+          fetch(`http://localhost:8000/adminClasses`)
           .then(
             (res) => res.json(),
           ),
       })
 
 
-      return [classInfo]
+      return [classInfo, refetch]
 };
 
 export default useHandleApproved;

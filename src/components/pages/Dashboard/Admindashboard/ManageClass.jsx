@@ -17,7 +17,7 @@ const ManageClass = () => {
   // }, [])
 
 
-  const [classInfo] = useHandleApproved()
+  const [classInfo, refetch] = useHandleApproved()
 
 
   const handleApproved = (id) => {
@@ -30,7 +30,31 @@ const ManageClass = () => {
       method: 'PATCH'
     })
       .then(res => res.json())
+      .then(data => {console.log(data)
+
+        refetch()
+      
+      })
+
+  }
+
+
+  const handleDeny = (id) => {
+
+
+    fetch(`http://localhost:8000/deny/${id}`, {
+      method: 'PATCH'
+    })
+      .then(res => res.json())
       .then(data => console.log(data))
+
+      refetch()
+
+
+
+
+
+
 
   }
 
@@ -94,7 +118,7 @@ const ManageClass = () => {
 
 
                         <button onClick={() => handleApproved(data._id)} className='button-primary'>Approve</button>
-                        <button className='btn btn-error'>Deny</button>
+                        <button onClick={() => handleDeny(data._id)} className='btn btn-error'>Deny</button>
                         <button className='button-primary'>Send Feedback</button>
                       </td>
 
