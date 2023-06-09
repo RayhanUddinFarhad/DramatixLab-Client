@@ -57,7 +57,7 @@ const Dashboard = () => {
                             {
                                 isAdmin?.admin ? (
                                     <>
-                                        <li><Link to="/dashboard/myClass">Manage Class</Link></li>
+                                        <li><Link to="/dashboard/manageClasses">Manage Class</Link></li>
                                         <li><Link to="/dashboard/manageUsers">Manage Users</Link></li>
                                     </>
                                 ) : Isinstructor ? (

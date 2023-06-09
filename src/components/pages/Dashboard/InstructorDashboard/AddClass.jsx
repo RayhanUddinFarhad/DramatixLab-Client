@@ -5,8 +5,52 @@ const AddClass = () => {
 
 
 
+    const image_key = `https://api.imgbb.com/1/upload?expiration=600&key=2c33a067e646a819c45a0ebc3b155daf`
+
+
+
     const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+
+    const formData = new FormData();
+        formData.append('image', data.classImage[0])
+
+        fetch(image_key, {
+            method: 'POST',
+            body: formData
+        })
+        .then (res => res.json())
+        .then (imgResponse => {
+            if (imgResponse.success) {
+
+
+
+                const imageURL = imgResponse.data.display_url
+
+                const newItem =  {image : imageURL, name : data.classname, instructor : data.InstructorName, email : data.InstructorEmail, availableSeats : parseFloat(data.seats), price : parseFloat(data.price), status : 'pending'} 
+
+
+                fetch (`http://localhost:8000/classes`, {
+                    method : 'POST',
+                    headers: { 'Content-Type' : 'application/json'},
+
+                    body: JSON.stringify(newItem)
+                })
+                .then (res => res.json())
+                .then (data => console.log(data))
+
+
+
+
+
+
+             }
+        })
+
+
+
+
+};
   console.log(errors);
     return (
         <div className=''>
@@ -22,7 +66,7 @@ const AddClass = () => {
                                 <label className="label">
                                     <span className="label-text">Class Image</span>
                                 </label>
-                                <input {...register("classImage", { required: true })} required type="text" placeholder="Class Image" className="input input-bordered" />
+                                <input {...register("classImage", { required: true })} required type="file" placeholder="Class Image" className="file-input file-input-bordered w-full max-w-xs" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

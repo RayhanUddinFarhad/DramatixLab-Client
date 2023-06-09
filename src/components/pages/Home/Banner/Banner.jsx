@@ -48,7 +48,7 @@ const Banner = () => {
 
 
 
-          <div className='absolute top-28 space-y-10 left-5 lg:w-96 text-white text-center'>
+          <div className='absolute top-28 space-y-10 left-5 lg:w-96 bg-black bg-opacity-50 text-white text-center'>
 
 
             <h1 className='text-white text-4xl font-extrabold '>Discover Your Dramatic Potential</h1>

@@ -11,42 +11,53 @@ const PopularClasses = () => {
     //         "name": "Introduction to Acting",
     //         "instructor": "John Smith",
     //         "availableSeats": 15,
-    //         "price": 99.99
+    //         "price": 99.99,
+    //         "status": "pending"
     //     },
     //     {
     //         "image": "https://api.time.com/wp-content/uploads/2019/11/time-best-of-culture-2019-theater-hadestown.jpg",
     //         "name": "Musical Theater Performance",
     //         "instructor": "Emily Johnson",
     //         "availableSeats": 12,
-    //         "price": 129.99
+    //         "price": 129.99,
+    //         "status": "pending"
+
     //     },
     //     {
     //         "image": "https://media.istockphoto.com/id/1394017865/photo/diverse-actors-practice-play-in-studio.jpg?s=612x612&w=0&k=20&c=Fjn5gmyy6jzcSlWJPwFb5gfJ6yGYmc2Kqj2OzcMGFwg=",
     //         "name": "Playwriting and Script Analysis",
     //         "instructor": "David Thompson",
     //         "availableSeats": 10,
-    //         "price": 89.99
+    //         "price": 89.99,
+    //         "status": "pending"
+
     //     },
     //     {
     //         "image": "https://mrspencersacht.files.wordpress.com/2016/10/ceafb9be29c0a256d4b951d014195601.jpg",
     //         "name": "Stagecraft and Set Design",
     //         "instructor": "Sarah Wilson",
     //         "availableSeats": 8,
-    //         "price": 109.99
+    //         "price": 109.99,
+    //         "status": "pending"
+
     //     },
     //     {
     //         "image": "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/12335/small_thumb%401x.jpg",
     //         "name": "Shakespearean Acting",
     //         "instructor": "Michael Anderson",
     //         "availableSeats": 10,
-    //         "price": 94.99
+    //         "price": 94.99,
+    //         "status": "pending"
+
     //     },
     //     {
     //         "image": "https://chelseatroy.com/wp-content/uploads/2015/08/improv-comedy.jpg",
     //         "name": "Improvisation and Comedy",
     //         "instructor": "Jessica Davis",
     //         "availableSeats": 15,
-    //         "price": 79.99
+    //         "price": 79.99,
+    //         "status": "pending"
+
     //     }
     // ]
 
