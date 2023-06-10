@@ -114,7 +114,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
           {
 
-            selectbutton && <button onClick={() => handleBookings(data._id)} disabled={isAdmin?.admin || Isinstructor?.instructor} className={`${isAdmin?.admin || Isinstructor?.instructor ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
+            selectbutton && <button onClick={() => handleBookings(data._id)}  className={`${isAdmin?.admin || Isinstructor?.instructor || data.availableSeats <= 0 ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
           }
 
           {

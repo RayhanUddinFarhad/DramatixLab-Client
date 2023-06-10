@@ -80,7 +80,7 @@ const InstructorMyClass = () => {
                       <td>
 
 
-                       {data.feedback}
+                       {data.status === 'approved' || data.status === 'pending' || data.feedback}
                       </td>
 
 
