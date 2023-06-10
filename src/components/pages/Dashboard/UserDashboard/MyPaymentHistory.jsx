@@ -23,7 +23,6 @@ const MyPaymentHistory = () => {
 
 
 
-<h1>I am payment</h1>
 
 
 

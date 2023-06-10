@@ -4,13 +4,15 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import useUser from '../../../hooks/useUser';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import useStudent from '../../../hooks/useStudent';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor(); // Modified variable name to isInstructor
-  console.log(isInstructor, isAdmin);
+  const [IsStudent] = useStudent()
+  console.log( IsStudent);
 
   const [userOne] = useUser();
 
@@ -35,7 +37,7 @@ const Dashboard = () => {
           <ul className="menu p-4 w-96 h-full bg-base-200 text-white">
             {/* Sidebar content here */}
             <>
-              {isAdmin ? (
+              {isAdmin?.admin ? (
                 <>
                   <li>
                     <Link to="/dashboard/manageClasses">Manage Class</Link>
@@ -44,7 +46,7 @@ const Dashboard = () => {
                     <Link to="/dashboard/manageUsers">Manage Users</Link>
                   </li>
                 </>
-              ) : isInstructor ? (
+              ) : isInstructor?.instructor ? (
                 <>
                   <li>
                     <Link to="/dashboard/addClass">Add A class</Link>
@@ -53,8 +55,8 @@ const Dashboard = () => {
                     <Link to="/dashboard/instructorClass">My Classes</Link>
                   </li>
                 </>
-              ) : (
-                <>
+              ) : IsStudent?.student ? (
+                <> 
                   <li>
                     <Link to="/dashboard/myClass">My Selected Class</Link>
                   </li>
@@ -65,7 +67,12 @@ const Dashboard = () => {
                     <Link to="/dashboard/paymentHistory">My Payment History</Link>
                   </li>
                 </>
-              )}
+              )
+              :
+
+              <p>No Route</p>
+            
+            }
             </>
           </ul>
         </div>
