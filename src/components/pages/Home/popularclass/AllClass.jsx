@@ -1,15 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useUser from '../../../../hooks/useUser';
 import axios from 'axios';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import useBooking from '../../../../hooks/useBooking';
+import useAdmin from '../../../../hooks/useAdmin';
+import useInstructor from '../../../../hooks/useInstructor';
 
 const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
 
   const { user } = useContext(AuthContext)
-  const [,  refetch] = useBooking()
+  const [, refetch] = useBooking()
+
+  const [isAdmin] = useAdmin()
+  const [Isinstructor] = useInstructor()
+
+  const [disable, setDisabled] = useState(false)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -20,7 +38,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
   const handleDelete = (id) => {
 
-   
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -35,37 +53,38 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
 
 
-        fetch (`http://localhost:8000/myBooking/${id}`, {
+        fetch(`http://localhost:8000/myBooking/${id}`, {
 
-        method : 'DELETE',
+          method: 'DELETE',
         })
-        .then (res => res.json())
-        .then (data  => {console.log(data)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
 
-          if (data.deletedCount > 1) {
+            if (data.deletedCount > 1) {
 
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
 
 
-          }
+            }
 
-          refetch()
-        
-        
-        
-        
-        })
-      
+            refetch()
+
+
+
+
+          })
+
       }
     })
 
 
 
-   }
+  }
 
   const handleBookings = (id) => {
 
@@ -95,7 +114,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
           {
 
-            selectbutton && <button onClick={() => handleBookings(data._id)} className='button-primary'>select now</button>
+            selectbutton && <button onClick={() => handleBookings(data._id)} disabled={isAdmin?.admin || Isinstructor?.instructor} className={`${isAdmin?.admin || Isinstructor?.instructor ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
           }
 
           {

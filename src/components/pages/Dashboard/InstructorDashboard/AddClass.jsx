@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../../../providers/AuthProvider';
 
 const AddClass = () => {
 
@@ -10,6 +11,11 @@ const AddClass = () => {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+
+
+
+
+    const {user} = useContext(AuthContext)
   const onSubmit = data => {
 
     const formData = new FormData();
@@ -27,7 +33,7 @@ const AddClass = () => {
 
                 const imageURL = imgResponse.data.display_url
 
-                const newItem =  {image : imageURL, name : data.classname, instructor : data.InstructorName, email : data.InstructorEmail, availableSeats : parseFloat(data.seats), price : parseFloat(data.price), status : 'pending'} 
+                const newItem =  {image : imageURL, name : data.classname, instructor : data.InstructorName, email : data.InstructorEmail, availableSeats : parseFloat(data.seats), price : parseFloat(data.price), status : 'pending', totalEnrolled : 0} 
 
 
                 fetch (`http://localhost:8000/classes`, {
@@ -74,7 +80,7 @@ const AddClass = () => {
                                 </label>
                                 <input className='input input-bordered'
                                     type="text"
-                                    placeholder="Instructor Name"
+                                    value={user?.displayName}                                    placeholder="Instructor Name"
                                     {...register("InstructorName")}
                                 />
 
@@ -86,6 +92,7 @@ const AddClass = () => {
                                 </label>
                                 <input className='input input-bordered'
                                     type="email"
+                                    value={user?.email}
                                     placeholder="Instructor Email"
                                     {...register("InstructorEmail")}
                                 />
