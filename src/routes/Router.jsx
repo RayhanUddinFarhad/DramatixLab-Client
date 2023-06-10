@@ -17,6 +17,8 @@ import AddClass from '../components/pages/Dashboard/InstructorDashboard/AddClass
 import ManageClass from '../components/pages/Dashboard/Admindashboard/ManageClass';
 import InstructorMyClass from '../components/pages/Dashboard/InstructorDashboard/InstructorMyClass';
 import Payment from '../components/pages/Dashboard/UserDashboard/Payment/Payment';
+import EnrolledClass from '../components/pages/Dashboard/UserDashboard/EnrolledClass';
+import MyPaymentHistory from '../components/pages/Dashboard/UserDashboard/MyPaymentHistory';
 
   export const router = createBrowserRouter([
     {
@@ -89,6 +91,16 @@ import Payment from '../components/pages/Dashboard/UserDashboard/Payment/Payment
             path : 'payment/:id',
             loader : ({params}) => fetch (`http://localhost:8000/dashboard/payment/${params.id}`),
             element : <Payment></Payment>
+          },
+
+          {
+            path : 'myEnrolledClass',
+            element : <EnrolledClass></EnrolledClass>
+          },
+
+          {
+            path : 'paymentHistory',
+            element : <MyPaymentHistory></MyPaymentHistory>
           }
         ]
        }

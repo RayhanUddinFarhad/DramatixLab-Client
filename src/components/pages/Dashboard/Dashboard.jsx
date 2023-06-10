@@ -69,6 +69,7 @@ const Dashboard = () => {
                                     <>
                                         <li><Link to="/dashboard/myClass">My Selected Class</Link></li>
                                         <li><Link to="/dashboard/myEnrolledClass">My Enrolled Class</Link></li>
+                                        <li ><Link to = '/dashboard/paymentHistory'>My Payment History</Link></li>
                                     </>
                                 )
                             }
