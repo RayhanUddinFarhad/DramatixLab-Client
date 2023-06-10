@@ -3,6 +3,8 @@ import {loadStripe} from '@stripe/stripe-js';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { AuthContext } from '../../../../../providers/AuthProvider';
 import useBooking from '../../../../../hooks/useBooking';
+import { useNavigate } from 'react-router-dom';
+import useAllClass from '../../../../../hooks/useAllClass';
 
 
 const CheckOut = ({price, data}) => {
@@ -10,11 +12,13 @@ const CheckOut = ({price, data}) => {
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
   const [success, setsuccess] = useState ('')
+  const navigate = useNavigate()
 
   const {user} = useContext(AuthContext)
-  const [booking] = useBooking()
+  const [booking, refetch] = useBooking()
   console.log(booking);
   console.log(data);
+  const [allClass] = useAllClass()
 
 
 
@@ -106,6 +110,22 @@ const CheckOut = ({price, data}) => {
 
      if (paymentIntent.status === 'succeeded') {
 
+
+        const items = {
+
+
+
+            id : data._id,
+            itemId : data.data._id,
+            date : new Date(),
+            image : data.data.image,
+            name : data.data.name,
+            price : data.data.price,
+            email : user.email
+
+
+        }
+
         setsuccess(paymentIntent.id)
 
         fetch (`http://localhost:8000/payments`, {
@@ -117,7 +137,7 @@ const CheckOut = ({price, data}) => {
         },
 
 
-        body : JSON.stringify(data)
+        body : JSON.stringify(items)
 
         
 
@@ -126,7 +146,19 @@ const CheckOut = ({price, data}) => {
 
         })
         .then (res => res.json())
-        .then (data => console.log(data))
+        .then (data => {console.log(data)
+
+            navigate ('/classes')
+
+
+
+
+
+
+                  
+        
+        
+        refetch()})
      }
    
   };
