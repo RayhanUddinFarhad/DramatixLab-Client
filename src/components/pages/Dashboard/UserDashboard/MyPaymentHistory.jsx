@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UNSAFE_DataRouterStateContext } from 'react-router-dom';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import moment from 'moment/moment';
 
 const MyPaymentHistory = () => {
     
@@ -13,7 +14,7 @@ const MyPaymentHistory = () => {
 
 
 
-        fetch (`http://localhost:8000/myEnrolled/${user?.email}`)
+        fetch (`http://localhost:8000/paymentHistory/${user?.email}`)
         .then (res => res.json())
         .then (data => setClasseInfo(data))
     },[])
@@ -38,6 +39,7 @@ const MyPaymentHistory = () => {
 
               <th>Price</th>
               <th>Status</th>
+              <th>Payment time</th>
             </tr>
           </thead>
           <tbody>
@@ -69,7 +71,7 @@ const MyPaymentHistory = () => {
                       
                       <td>{data.price}</td>
                       <td>Paid</td>
-                      <td>{data.date}</td>
+                      <td>{moment(data.date).format('MMMM Do YYYY, h:mm:ss a')}</td>
                       <td>
 
 
