@@ -1,6 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import useBooking from '../../../../hooks/useBooking';
+import { Link } from 'react-router-dom';
 
 const MyClass = ({data}) => {
 
@@ -74,7 +75,7 @@ const MyClass = ({data}) => {
                     <div className='flex justify-between'>
 
 
-                        <button className='button-primary'>Pay Now</button>
+                        <Link to = {`/dashboard/payment/${data._id}`}><button className='button-primary'>Pay Now</button></Link>
                         <button onClick={() => handleDelete(data._id)} className='btn btn-error'>Delete</button>
                     </div>
 

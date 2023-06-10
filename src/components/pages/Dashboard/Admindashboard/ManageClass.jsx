@@ -22,6 +22,8 @@ const ManageClass = () => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
+  const [disable, setDisabled] = useState(false)
+
 
 
   const handleApproved = (id) => {
@@ -38,6 +40,8 @@ const ManageClass = () => {
         console.log(data)
 
         refetch()
+
+        setDisabled(true)
 
       })
 
@@ -56,6 +60,9 @@ const ManageClass = () => {
     refetch()
 
 
+    setDisabled(true)
+
+
 
 
 
@@ -65,7 +72,7 @@ const ManageClass = () => {
 
 
 
- 
+
 
 
 
@@ -97,7 +104,7 @@ const ManageClass = () => {
     }
   };
 
-  
+
 
 
 
@@ -116,10 +123,10 @@ const ManageClass = () => {
           <thead>
             <tr>
 
-              <th>Class Image</th>
-              <th>Class Name</th>
-              <th>Instructor Name</th>
-              <th>Instructor Email</th>
+
+              <th>Class Info</th>
+
+              <th>Instructor Info</th>
               <th>Available Seats</th>
               <th>Price</th>
               <th>Status</th>
@@ -147,34 +154,44 @@ const ManageClass = () => {
                         <div className="mask mask-squircle w-12 h-12">
                           <img src={data.image} alt="Avatar Tailwind CSS Component" />
                         </div>
-                      </div> </td>
+                      </div>
 
-                      <td>{data.name}</td>
-                      <td>{data.instructor}</td>
-                      <td>{data?.email}</td>
+                        <p>{data.name}</p> </td>
+
+                      <td>
+
+
+
+                        <p>{data.instructor}</p>
+                        <p>{data?.email}</p>
+                      </td>
                       <td>{data.availableSeats}</td>
                       <td>{data.price}</td>
                       <td>{data.status}</td>
                       <td>
 
 
-                        <button onClick={() => handleApproved(data._id)} className='button-primary'>Approve</button>
-                        <button onClick={() => handleDeny(data._id)} className='btn btn-error'>Deny</button>
+                        <div className='flex space-x-5'>
+
+                          <button onClick={() => handleApproved(data._id)} className={` text-white ${data.status === 'approved' || data.status === 'denied' ? 'btn btn-disabled' : 'button-primary'}`}>Approve</button>
+                          <button onClick={() => handleDeny(data._id)} className={`text-white ${data.status === 'denied' || data.status === 'approved' ? 'btn btn-disabled' : 'btn btn-error'}`}>Deny</button>
+                          <label htmlFor="my_modal_6" className="button-primary" onClick={() => showModal(data._id)}>Send Feedback</label>
+
+                        </div>
 
 
                         {/* The button to open modal */}
-                        <label htmlFor="my_modal_6" className="button-primary" onClick={() => showModal(data._id)}>Send Feedback</label>
 
                         {/* Put this part before </body> tag */}
                         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
                         <div className="modal">
-                          <form onSubmit={SendFeedback}   className="modal-box">
-                          <textarea placeholder="Your Feedback" name='feedback' className="textarea textarea-bordered textarea-lg w-full max-w-xs" >
+                          <form onSubmit={SendFeedback} className="modal-box">
+                            <textarea placeholder="Your Feedback" name='feedback' className="textarea textarea-bordered textarea-lg w-full max-w-xs" >
 
-                            
-                          </textarea>
 
-                          <button onClick={() => sendingto(data._id)} className='button-primary'>send Now</button>
+                            </textarea>
+
+                            <button onClick={() => sendingto(data._id)} className='button-primary'>send Now</button>
 
                             <div className="modal-action">
                               <label htmlFor="my_modal_6" className="btn">Close!</label>

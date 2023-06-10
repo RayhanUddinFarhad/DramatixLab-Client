@@ -1,0 +1,167 @@
+import React, { useContext, useEffect, useState } from 'react';
+import {loadStripe} from '@stripe/stripe-js';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { AuthContext } from '../../../../../providers/AuthProvider';
+import useBooking from '../../../../../hooks/useBooking';
+
+
+const CheckOut = ({price, data}) => {
+    const stripe = useStripe();
+  const elements = useElements();
+  const [clientSecret, setClientSecret] = useState("");
+  const [success, setsuccess] = useState ('')
+
+  const {user} = useContext(AuthContext)
+  const [booking] = useBooking()
+  console.log(booking);
+  console.log(data);
+
+
+
+  const [cardError, setCardError] = useState('')
+  const [processing , setProcessing] = useState(false)
+
+
+
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    fetch("http://localhost:8000/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ price }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, []);
+
+
+
+
+
+
+  const handleSubmit = async (event) => {
+    // Block native form submission.
+    event.preventDefault();
+
+    if (!stripe || !elements) {
+      // Stripe.js has not loaded yet. Make sure to disable
+      // form submission until Stripe.js has loaded.
+      return;
+    }
+
+    // Get a reference to a mounted CardElement. Elements knows how
+    // to find your CardElement because there can only ever be one of
+    // each type of element.
+    const card = elements.getElement(CardElement);
+
+    if (card == null) {
+      return;
+    }
+
+
+
+
+   
+
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+        type: 'card',
+        card,
+      });
+  
+      if (error) {
+        console.log('[error]', error);
+        setCardError(error.message)
+      } else {
+        console.log('[PaymentMethod]', paymentMethod);
+      }
+
+      setProcessing(true)
+    
+
+
+
+      const {paymentIntent, error : confirmError} = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: user?.displayName || 'Anonymous',
+              email : user?.email || 'anonymous',
+            },
+          },
+        },
+      );
+
+
+     if (confirmError) {
+
+        console.log(confirmError);
+     }
+
+     setProcessing(false)
+
+     console.log(paymentIntent);
+
+
+     if (paymentIntent.status === 'succeeded') {
+
+        setsuccess(paymentIntent.id)
+
+        fetch (`http://localhost:8000/payments`, {
+
+        method : 'POST',
+
+        headers : {
+            'Content-Type': 'application/json',
+        },
+
+
+        body : JSON.stringify(data)
+
+        
+
+        
+
+
+        })
+        .then (res => res.json())
+        .then (data => console.log(data))
+     }
+   
+  };
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+      <CardElement className='w-96'
+        options={{
+          style: {
+            base: {
+              fontSize: '16px',
+              color: '#FFF',
+              '::placeholder': {
+                color: '#aab7c4',
+              },
+            },
+            invalid: {
+              color: '#9e2146',
+            },
+          },
+        }}
+      />
+      <button className='button-primary' type="submit" disabled={!stripe || !clientSecret || processing}>
+        Pay
+      </button>
+    </form>
+
+    <p className='text-error'>{cardError}</p>
+    {
+
+        success && <p className='text-success'>Your Transaction completed with ${success}</p>
+    }
+        </div>
+    );
+};
+
+export default CheckOut;

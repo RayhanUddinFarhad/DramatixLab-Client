@@ -16,6 +16,7 @@ import ManageUsers from '../components/pages/Dashboard/Admindashboard/ManageUser
 import AddClass from '../components/pages/Dashboard/InstructorDashboard/AddClass';
 import ManageClass from '../components/pages/Dashboard/Admindashboard/ManageClass';
 import InstructorMyClass from '../components/pages/Dashboard/InstructorDashboard/InstructorMyClass';
+import Payment from '../components/pages/Dashboard/UserDashboard/Payment/Payment';
 
   export const router = createBrowserRouter([
     {
@@ -83,6 +84,11 @@ import InstructorMyClass from '../components/pages/Dashboard/InstructorDashboard
           {
             path : 'instructorClass',
             element : <InstructorMyClass></InstructorMyClass>
+          },
+          {
+            path : 'payment/:id',
+            loader : ({params}) => fetch (`http://localhost:8000/dashboard/payment/${params.id}`),
+            element : <Payment></Payment>
           }
         ]
        }
