@@ -110,6 +110,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
           <p> Instructor: {data.instructor}</p>
           <p>Available Seats : {data.availableSeats}</p>
           <p>Price : ${data.price}</p>
+          <p>Total Enrolled : {data.totalEnrolled}</p>
 
 
           {

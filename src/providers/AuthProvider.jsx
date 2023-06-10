@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from '../firebase/firebase.config';
+import axios from 'axios';
 
 const auth = getAuth(app);
 export const AuthContext = createContext(null)
@@ -8,10 +9,12 @@ const provider = new GoogleAuthProvider();
 
 
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
 
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true);
+
 
 
 
@@ -19,53 +22,74 @@ const AuthProvider = ({children}) => {
 
 
     const signUp = (email, password) => {
+        setLoading(true)
 
-        return createUserWithEmailAndPassword (auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password)
 
 
     }
 
     const googleLogin = () => {
+        setLoading(true)
 
 
 
-        return signInWithPopup (auth, provider)
-     }
+        return signInWithPopup(auth, provider)
+    }
 
-     const logOut = () => {
+    const logOut = () => {
+        setLoading(true)
 
-      return  signOut (auth)
-     }
+        return signOut(auth)
+    }
 
-     const logIn = (email, password) => {
+    const logIn = (email, password) => {
 
-
-        return signInWithEmailAndPassword (auth, email, password)
-
-
+        setLoading(true)
 
 
-      }
+        return signInWithEmailAndPassword(auth, email, password)
 
 
 
 
-    useEffect (() => { 
+    }
 
 
 
-        const unsubscribe = onAuthStateChanged (auth, currentUser => {
+
+    useEffect(() => {
 
 
-            setUser (currentUser)
-        } )
+
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+
+
+            setUser(currentUser)
+
+
+            if (currentUser) {
+
+
+                axios.post(`http://localhost:8000/jwt`, { email: currentUser.email })
+                    .then(data => {
+                        console.log(data.data.token);
+                        localStorage.setItem ('access_token', data.data.token)
+                        setLoading(false)
+                    })
+            }
+
+            else {
+                localStorage.removeItem ('access_token')
+            }
+        })
 
 
         return () => {
 
 
             return unsubscribe()
-         }
+        }
     }, [])
 
 
@@ -77,13 +101,14 @@ const AuthProvider = ({children}) => {
         signUp,
         googleLogin,
         logOut,
-        logIn
+        logIn,
+        loading
     }
 
 
 
 
-    
+
 
 
 
@@ -94,8 +119,8 @@ const AuthProvider = ({children}) => {
 
             {children}
 
-            
-            
+
+
         </AuthContext.Provider>
     );
 };

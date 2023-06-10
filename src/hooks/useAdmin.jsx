@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 const useAdmin = () => {
 
     const {user} = useContext(AuthContext)
+    
 
     
     const { isLoading, error, data : isAdmin , refetch } = useQuery({
