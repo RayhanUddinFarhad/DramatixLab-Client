@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { useLoaderData } from 'react-router-dom';
 
+
 const Payment = () => {
 
 
@@ -16,12 +17,12 @@ const Payment = () => {
     const stripePromise = loadStripe('pk_test_51NHLRyEvzSccsuMSkox8xjZ1nvH4NaXBqA2ihNjQL9S2u5T8Owszz0Zcu5JplCimK1PvkEbzw1dwvvHzbTMbLWWS00xhRLoMdj');
 
     return (
-        <div>
+        <div className=''>
 
-           <p className='text-white'> Pay Now : {data?.data.price}</p>
+           <p className='text-base-content'> Pay Now : {data?.data.price}</p>
 
 
-            <Elements stripe={stripePromise}>
+            <Elements  stripe={stripePromise}>
             <CheckOut price={Number(data?.data.price)} data = {data} />
             </Elements>
 

@@ -166,14 +166,14 @@ const CheckOut = ({price, data}) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-      <CardElement className='w-96'
+      <CardElement className='w-96 text-base-content placeholder-current'
         options={{
           style: {
             base: {
               fontSize: '16px',
-              color: '#FFF',
+              color: '',
               '::placeholder': {
-                color: '#aab7c4',
+                color: '',
               },
             },
             invalid: {

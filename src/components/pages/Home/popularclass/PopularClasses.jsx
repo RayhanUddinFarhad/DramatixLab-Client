@@ -89,7 +89,7 @@ const PopularClasses = () => {
 
             <div className='text-center mx-auto my-10'>
 
-                <h1 className='text-3xl text-white font-extrabold border-b lg:mx-96 border-red-400 pb-2'>Popular Classes</h1>
+                <h1 className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>Popular Classes</h1>
 
             </div>
 

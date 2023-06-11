@@ -28,7 +28,7 @@ const Dashboard = () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side ">
+        <div className="drawer-side bg-base-200 py-5">
           <div>
             <img className="object-contain  border-2 border-red-300 rounded-full mx-auto w-52" src={user?.photoURL} alt="" />
             <h1 className="text-center text-xl font-bold">{user?.displayName}</h1>
@@ -36,7 +36,7 @@ const Dashboard = () => {
             
           </div>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-96 h-full bg-base-200 text-white">
+          <ul className="menu p-4 w-96 h-full bg-base-200 ">
             {/* Sidebar content here */}
             <>
               {isAdmin ? (

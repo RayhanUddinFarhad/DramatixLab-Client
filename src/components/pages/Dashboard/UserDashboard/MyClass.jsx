@@ -62,7 +62,7 @@ const MyClass = ({data}) => {
     
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl text-white h-full">
+            <div className="card w-96 bg-base-100 shadow-xl text-base-content h-full">
                 <figure><img src={data.data.image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{data.data.name}</h2>

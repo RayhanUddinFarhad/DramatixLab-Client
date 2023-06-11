@@ -111,7 +111,7 @@ const Register = () => {
 
     return (
         <div>
-            <div className="my-10  ">
+            <div className="my-10   ">
                 <div className=" ">
                     <div className="text-center ">
                         <h1 className="text-5xl font-bold">Register now!</h1>
@@ -190,10 +190,13 @@ const Register = () => {
 
                         </form>
 
-                        <GoogleLogIn></GoogleLogIn>
+                       <div className='p-5 space-y-5'>
+
+                       <GoogleLogIn></GoogleLogIn>
 
 
-                        <p>Already have an account? <Link to="/logIn" className='btn-link'>Log In Now</Link></p>
+<p>Already have an account? <Link to="/logIn" className='btn-link'>Log In Now</Link></p>
+                       </div>
 
                     </div>
                 </div>

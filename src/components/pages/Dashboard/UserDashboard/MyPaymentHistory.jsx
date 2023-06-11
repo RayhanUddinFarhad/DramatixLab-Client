@@ -57,7 +57,7 @@ const MyPaymentHistory = () => {
 
 
                   <>
-                    <tr className='text-white'>
+                    <tr className='text-base-500'>
                       <td><div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
                           <img src={data.image} alt="Avatar Tailwind CSS Component" />

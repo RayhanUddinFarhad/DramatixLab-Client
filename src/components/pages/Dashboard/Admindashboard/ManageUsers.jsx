@@ -104,7 +104,7 @@ const ManageUsers = () => {
 
                                         </th>
                                         <td>
-                                            <div className="flex items-center space-x-3">
+                                            <div className="flex items-center space-x-3 text-base-500">
                                                 <div className="avatar">
                                                     <div className="mask mask-squircle w-12 h-12">
                                                         <img src={userInfo.image} alt="Avatar Tailwind CSS Component" />

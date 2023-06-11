@@ -79,7 +79,7 @@ const AddClass = () => {
   console.log(errors);
     return (
         <div className=''>
-            <div className="card mx-auto lg:w-96  shadow-lg bg-base-100">
+            <div className="card mx-auto lg:w-96 text-base-content shadow-lg bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
