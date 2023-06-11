@@ -145,7 +145,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
   }
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl text-base-content h-full">
+      <div className= {`card w-96  shadow-xl text-base-content h-full ${data.availableSeats <= 0 ? 'bg-red-600' : 'bg-base-200'}`}>
         <figure><img src={data.image} alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">{data.name}</h2>

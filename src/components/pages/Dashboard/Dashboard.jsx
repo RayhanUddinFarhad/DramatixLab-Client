@@ -5,15 +5,15 @@ import useUser from '../../../hooks/useUser';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
 import useStudent from '../../../hooks/useStudent';
-import { FaBookmark, FaChalkboardTeacher, FaCheck, FaCheckCircle, FaCog, FaCreditCard, FaEnvelope, FaGraduationCap, FaPlusCircle, FaUser, FaUsers } from 'react-icons/fa';
+import { FaBookmark, FaChalkboardTeacher, FaCheck, FaCheckCircle, FaCog, FaCreditCard, FaEnvelope, FaGraduationCap, FaHome, FaPlusCircle, FaUser, FaUsers } from 'react-icons/fa';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
   const [isAdmin] = useAdmin();
-  const [Isinstructor] = useInstructor(); 
+  const [Isinstructor] = useInstructor();
   const [IsStudent] = useStudent()
-  console.log( IsStudent);
+  console.log(IsStudent);
   console.log(isAdmin, Isinstructor, IsStudent);
 
   const [userOne] = useUser();
@@ -29,21 +29,26 @@ const Dashboard = () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side bg-base-200 py-5 ">
+        <div className="drawer-side bg-base-200 p-5">
           <div className='space-y-5 text-center'>
             <img className="object-contain  border-2 border-red-300 rounded-full mx-auto w-52" src={user?.photoURL} alt="" />
             <h1 className="text-center text-xl font-bold flex items-center"> <FaUser className='mr-2'></FaUser> {user?.displayName}</h1>
             <h1 className="text-center text-xl font-bold flex items-center"> <FaEnvelope className='mr-2'></FaEnvelope> {user?.email}</h1>
-            
-            
+
+
           </div>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-96 h-full bg-base-200 font-semibold">
             {/* Sidebar content here */}
+
+
+
             <>
               {isAdmin ? (
                 <>
-                <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Admin</span></h1>
+                  <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Admin</span></h1>
+                  <li><Link to="/dashboard"> <FaHome></FaHome> User Home</Link></li>
+
                   <li>
                     <Link to="/dashboard/manageClasses"> <FaCog></FaCog> Manage Class</Link>
                   </li>
@@ -53,8 +58,13 @@ const Dashboard = () => {
                 </>
               ) : Isinstructor ? (
                 <>
+                  <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Instructor</span></h1>
+
+
+                  <li><Link to="/dashboard"> <FaHome></FaHome> User Home</Link></li>
+
                   <li>
-                  <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Instructor</span>,</h1>
+
 
                     <Link to="/dashboard/addClass"> <FaPlusCircle></FaPlusCircle> Add A class</Link>
                   </li>
@@ -63,10 +73,12 @@ const Dashboard = () => {
                   </li>
                 </>
               ) : IsStudent ? (
-                <> 
-                <h1>Hello Student </h1>
-                  <li className='flex'> 
-                    <Link  to="/dashboard/myClass"><FaCheckCircle></FaCheckCircle> My Selected Class</Link>
+                <>
+                  <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Student</span></h1>
+                  <li><Link to="/dashboard"> <FaHome></FaHome> User Home</Link></li>
+
+                  <li className='flex'>
+                    <Link to="/dashboard/myClass"><FaCheckCircle></FaCheckCircle> My Selected Class</Link>
                   </li>
                   <li>
                     <Link to="/dashboard/myEnrolledClass"> <FaBookmark></FaBookmark>My Enrolled Class</Link>
@@ -76,11 +88,11 @@ const Dashboard = () => {
                   </li>
                 </>
               )
-              :
+                :
 
-              <p>No Route</p>
-            
-            }
+                <p>Loading.....</p>
+
+              }
             </>
           </ul>
         </div>

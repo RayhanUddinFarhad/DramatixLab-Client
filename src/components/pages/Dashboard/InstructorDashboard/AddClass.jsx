@@ -3,11 +3,16 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
+
+
+const img_hosting_token = import.meta.env.VITE_IMAGE_KEY;
+
+
 const AddClass = () => {
 
 
 
-    const image_key = `https://api.imgbb.com/1/upload?expiration=600&key=2c33a067e646a819c45a0ebc3b155daf`
+    const image_key = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
 
 

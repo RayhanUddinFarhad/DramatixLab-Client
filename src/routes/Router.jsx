@@ -22,6 +22,7 @@ import MyPaymentHistory from '../components/pages/Dashboard/UserDashboard/MyPaym
 import AdminRoute from './AdminRoute';
 import InstructorRoute from './InstructorRoute';
 import StudentRoute from './StudentRoute';
+import UserHome from '../components/pages/Dashboard/UserHome';
 
   export const router = createBrowserRouter([
     {
@@ -63,6 +64,12 @@ import StudentRoute from './StudentRoute';
         element : <Dashboard></Dashboard>,
 
         children : [
+
+          {
+            path : "/dashboard",
+            element : <UserHome></UserHome>
+
+          },
 
           {
             path  : 'myClass',

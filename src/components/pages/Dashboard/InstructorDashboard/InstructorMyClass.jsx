@@ -27,7 +27,7 @@ const InstructorMyClass = () => {
         <div>
 
 <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table table-sm">
           {/* head */}
           <thead>
             <tr>

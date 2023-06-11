@@ -5,6 +5,7 @@ import PopularClasses from './popularclass/PopularClasses';
 import TopInstructor from './Instructors/TopInstructor';
 import RocketScrollAnimation from '../../shared/RocketScrollAnimation';
 import PerformanceShowCase from '../../shared/PerformanceShowcase'
+import AnotherExtraSection from './AnotherExtraSection';
 
 const Home = () => {
     return (
@@ -14,9 +15,12 @@ const Home = () => {
 
 <Banner></Banner>
 <PopularClasses></PopularClasses>
-<PerformanceShowCase></PerformanceShowCase>
+
+<AnotherExtraSection></AnotherExtraSection>
 
 <TopInstructor></TopInstructor>
+<PerformanceShowCase></PerformanceShowCase>
+
 
 </div>
         

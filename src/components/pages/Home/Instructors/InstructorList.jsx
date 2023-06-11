@@ -7,7 +7,7 @@ const InstructorList = ({data}) => {
         <div className="card-body">
           <h2 className="card-title">{data.name}</h2>
           
-          <p>Email : {data.email}</p>
+          <p className='text-red-500'>Email : {data.email}</p>
           
         </div>
       </div>

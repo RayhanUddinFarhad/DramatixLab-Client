@@ -112,7 +112,7 @@ const ManageClass = () => {
 
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table table-xs">
           {/* head */}
           <thead>
             <tr>
@@ -185,7 +185,7 @@ const ManageClass = () => {
 
                             </textarea>
 
-                            <button onClick={() => sendingto(data._id)} className='button-primary'>send Now</button>
+                            <button onClick={() => sendingto(data._id)} className='button-primary block'>send Now</button>
 
                             <div className="modal-action">
                               <label htmlFor="my_modal_6" className="btn">Close!</label>
