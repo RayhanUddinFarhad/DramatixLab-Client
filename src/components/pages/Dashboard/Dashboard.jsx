@@ -5,6 +5,7 @@ import useUser from '../../../hooks/useUser';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
 import useStudent from '../../../hooks/useStudent';
+import { FaBookmark, FaChalkboardTeacher, FaCheck, FaCheckCircle, FaCog, FaCreditCard, FaEnvelope, FaGraduationCap, FaPlusCircle, FaUser, FaUsers } from 'react-icons/fa';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -28,49 +29,50 @@ const Dashboard = () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side bg-base-200 py-5">
-          <div>
+        <div className="drawer-side bg-base-200 py-5 ">
+          <div className='space-y-5 text-center'>
             <img className="object-contain  border-2 border-red-300 rounded-full mx-auto w-52" src={user?.photoURL} alt="" />
-            <h1 className="text-center text-xl font-bold">{user?.displayName}</h1>
-            <h1 className="text-center text-xl font-bold">{user?.email}</h1>
+            <h1 className="text-center text-xl font-bold flex items-center"> <FaUser className='mr-2'></FaUser> {user?.displayName}</h1>
+            <h1 className="text-center text-xl font-bold flex items-center"> <FaEnvelope className='mr-2'></FaEnvelope> {user?.email}</h1>
+            
             
           </div>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-96 h-full bg-base-200 ">
+          <ul className="menu p-4 w-96 h-full bg-base-200 font-semibold">
             {/* Sidebar content here */}
             <>
               {isAdmin ? (
                 <>
-                <h1 className='text-3xl font-bold'>Hello Admin,</h1>
+                <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Admin</span></h1>
                   <li>
-                    <Link to="/dashboard/manageClasses">Manage Class</Link>
+                    <Link to="/dashboard/manageClasses"> <FaCog></FaCog> Manage Class</Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/manageUsers">Manage Users</Link>
+                    <Link to="/dashboard/manageUsers"> <FaUsers></FaUsers> Manage Users</Link>
                   </li>
                 </>
               ) : Isinstructor ? (
                 <>
                   <li>
-                  <h1 className='text-3xl font-bold'>Hello Instructor,</h1>
+                  <h1 className='text-3xl font-bold'>Hello <span className='text-primary-content'>Instructor</span>,</h1>
 
-                    <Link to="/dashboard/addClass">Add A class</Link>
+                    <Link to="/dashboard/addClass"> <FaPlusCircle></FaPlusCircle> Add A class</Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/instructorClass">My Classes</Link>
+                    <Link to="/dashboard/instructorClass"> <FaGraduationCap></FaGraduationCap> My Classes</Link>
                   </li>
                 </>
               ) : IsStudent ? (
                 <> 
-                <h1>Hello Student, </h1>
-                  <li>
-                    <Link to="/dashboard/myClass">My Selected Class</Link>
+                <h1>Hello Student </h1>
+                  <li className='flex'> 
+                    <Link  to="/dashboard/myClass"><FaCheckCircle></FaCheckCircle> My Selected Class</Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/myEnrolledClass">My Enrolled Class</Link>
+                    <Link to="/dashboard/myEnrolledClass"> <FaBookmark></FaBookmark>My Enrolled Class</Link>
                   </li>
                   <li>
-                    <Link to="/dashboard/paymentHistory">My Payment History</Link>
+                    <Link to="/dashboard/paymentHistory"> <FaCreditCard></FaCreditCard> My Payment History</Link>
                   </li>
                 </>
               )

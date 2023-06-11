@@ -2,6 +2,7 @@ import React from 'react';
 import AllClass from '../popularclass/AllClass';
 import InstructorList from './InstructorList';
 import useIntructors from '../../../../hooks/useIntructors';
+import { Fade } from 'react-awesome-reveal';
 
 const TopInstructor = () => {
 
@@ -54,9 +55,13 @@ const TopInstructor = () => {
 
 
 
-            <div className='text-center mx-auto my-10'>
+            <div cascade className='text-center mx-auto my-10'>
 
-                <h1 className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>Top Instructor</h1>
+                <Fade cascade  className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>
+
+                    <p>Top</p>
+                    <p>Instructors</p>
+                </Fade>
 
 
 

@@ -3,6 +3,7 @@ import AllClass from './AllClass';
 import { FaChessKing } from 'react-icons/fa';
 import useClasses from '../../../../hooks/useClasses';
 import usePopularClasses from '../../../../hooks/usePopularClasses';
+import { Fade } from 'react-awesome-reveal';
 
 const PopularClasses = () => {
 
@@ -87,12 +88,17 @@ const PopularClasses = () => {
     return (
         <div>
 
-            <div className='text-center mx-auto my-10'>
+<div cascade className='text-center mx-auto my-10'>
 
-                <h1 className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>Popular Classes</h1>
+<Fade cascade  className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>
 
-            </div>
+    <p>Popular</p>
+    <p>Classes</p>
+</Fade>
 
+
+
+</div>
 
             <div className='grid lg:grid-cols-3 gap-5'>
 
