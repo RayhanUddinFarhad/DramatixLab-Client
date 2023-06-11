@@ -1,24 +1,27 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import useAxiosSecure from './useAxiosSecure';
 
 const useStudent = () => {
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
     const token = localStorage.getItem('access_token')
+    const [axiosSecure] = useAxiosSecure();
+
 
     
-    const { isLoading, error, data : IsStudent , refetch } = useQuery({
+    const { isLoading: isStudentLoading, error, data : IsStudent , refetch } = useQuery({
         queryKey: ['IsStudent', user?.email ],
+        enabled: !loading,
+
         queryFn: async () => {
-          const res = await fetch(`http://localhost:8000/users/student/${user?.email}`, { headers: {
-              authorization: `bearer ${token}`
-          }})
-          return res.json();
-      },
+            const res = await axiosSecure.get(`/users/student/${user?.email}`);
+            return res.data.student;
+        }
       })
 
 
-      return [IsStudent]
+      return [IsStudent, isStudentLoading]
 };
 
 export default useStudent;

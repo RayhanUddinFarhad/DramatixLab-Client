@@ -10,9 +10,10 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
   const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor(); // Modified variable name to isInstructor
+  const [Isinstructor] = useInstructor(); 
   const [IsStudent] = useStudent()
   console.log( IsStudent);
+  console.log(isAdmin, Isinstructor, IsStudent);
 
   const [userOne] = useUser();
 
@@ -32,13 +33,15 @@ const Dashboard = () => {
             <img className="object-contain  border-2 border-red-300 rounded-full mx-auto w-52" src={user?.photoURL} alt="" />
             <h1 className="text-center text-xl font-bold">{user?.displayName}</h1>
             <h1 className="text-center text-xl font-bold">{user?.email}</h1>
+            
           </div>
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-96 h-full bg-base-200 text-white">
             {/* Sidebar content here */}
             <>
-              {isAdmin?.admin ? (
+              {isAdmin ? (
                 <>
+                <h1 className='text-3xl font-bold'>Hello Admin,</h1>
                   <li>
                     <Link to="/dashboard/manageClasses">Manage Class</Link>
                   </li>
@@ -46,7 +49,7 @@ const Dashboard = () => {
                     <Link to="/dashboard/manageUsers">Manage Users</Link>
                   </li>
                 </>
-              ) : isInstructor?.instructor ? (
+              ) : Isinstructor ? (
                 <>
                   <li>
                     <Link to="/dashboard/addClass">Add A class</Link>
@@ -55,7 +58,7 @@ const Dashboard = () => {
                     <Link to="/dashboard/instructorClass">My Classes</Link>
                   </li>
                 </>
-              ) : IsStudent?.student ? (
+              ) : IsStudent ? (
                 <> 
                   <li>
                     <Link to="/dashboard/myClass">My Selected Class</Link>

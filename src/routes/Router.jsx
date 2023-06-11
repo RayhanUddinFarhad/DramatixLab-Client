@@ -19,6 +19,9 @@ import InstructorMyClass from '../components/pages/Dashboard/InstructorDashboard
 import Payment from '../components/pages/Dashboard/UserDashboard/Payment/Payment';
 import EnrolledClass from '../components/pages/Dashboard/UserDashboard/EnrolledClass';
 import MyPaymentHistory from '../components/pages/Dashboard/UserDashboard/MyPaymentHistory';
+import AdminRoute from './AdminRoute';
+import InstructorRoute from './InstructorRoute';
+import StudentRoute from './StudentRoute';
 
   export const router = createBrowserRouter([
     {
@@ -63,29 +66,29 @@ import MyPaymentHistory from '../components/pages/Dashboard/UserDashboard/MyPaym
 
           {
             path  : 'myClass',
-            element : <MyBooking></MyBooking>
+            element : <StudentRoute><MyBooking></MyBooking></StudentRoute>
           },
 
           {
 
             path : 'manageUsers',
-            element : <ManageUsers></ManageUsers>
+            element : <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
           }, 
 
           {
             path : 'addClass',
-            element : <AddClass></AddClass>
+            element : <InstructorRoute><AddClass></AddClass></InstructorRoute>
 
           },
 
           {
 
             path : 'manageClasses',
-            element : <ManageClass></ManageClass>
+            element : <AdminRoute><ManageClass></ManageClass></AdminRoute>
           },
           {
             path : 'instructorClass',
-            element : <InstructorMyClass></InstructorMyClass>
+            element : <InstructorRoute><InstructorMyClass></InstructorMyClass></InstructorRoute>
           },
           {
             path : 'payment/:id',
@@ -95,12 +98,12 @@ import MyPaymentHistory from '../components/pages/Dashboard/UserDashboard/MyPaym
 
           {
             path : 'myEnrolledClass',
-            element : <EnrolledClass></EnrolledClass>
+            element : <StudentRoute><EnrolledClass></EnrolledClass></StudentRoute>
           },
 
           {
             path : 'paymentHistory',
-            element : <MyPaymentHistory></MyPaymentHistory>
+            element : <StudentRoute><MyPaymentHistory></MyPaymentHistory></StudentRoute>
           }
         ]
        }
