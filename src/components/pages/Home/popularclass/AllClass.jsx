@@ -57,7 +57,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
 
 
-        fetch(`http://localhost:8000/myBooking/${id}`, {
+        fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/myBooking/${id}`, {
 
           method: 'DELETE',
         })
@@ -94,9 +94,19 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
 
    if (user) {
-    axios.post('http://localhost:8000/myBooking', item)
+    axios.post('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/myBooking', item)
     .then(function (response) {
-      console.log(response);
+      console.log(response.data.insertedId);
+
+      if (response.data.insertedId) {
+
+
+        Swal.fire(
+          'Good job!',
+          'Your Class has been added to your class',
+          'success'
+        )
+      }
     })
     .catch(function (error) {
       console.log(error);

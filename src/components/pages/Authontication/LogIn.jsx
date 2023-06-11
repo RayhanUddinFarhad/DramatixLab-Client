@@ -16,7 +16,7 @@ const LogIn = () => {
 
 
 
-    const [show, setShowing] = useState(true)
+    const [show, setShowing] = useState(false)
 
 
    

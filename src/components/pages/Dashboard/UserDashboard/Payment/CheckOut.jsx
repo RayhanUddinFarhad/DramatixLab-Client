@@ -29,7 +29,7 @@ const CheckOut = ({price, data}) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:8000/create-payment-intent", {
+    fetch("https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price }),
@@ -128,7 +128,7 @@ const CheckOut = ({price, data}) => {
 
         setsuccess(paymentIntent.id)
 
-        fetch (`http://localhost:8000/payments`, {
+        fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/payments`, {
 
         method : 'POST',
 

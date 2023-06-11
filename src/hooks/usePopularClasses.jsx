@@ -5,7 +5,7 @@ const usePopularClasses = () => {
     const { isLoading, error, data : popularClasses = [], refetch } = useQuery({
         queryKey: ['popularClasses'],
         queryFn: () =>
-          fetch('http://localhost:8000/popularClasses').then(
+          fetch('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/popularClasses').then(
             (res) => res.json(),
           ),
       })

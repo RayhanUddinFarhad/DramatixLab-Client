@@ -10,7 +10,7 @@ const useBooking = () => {
     const { isLoading, error, data : booking = [], refetch } = useQuery({
         queryKey: ['booking'],
         queryFn: () =>
-          fetch(`http://localhost:8000/myBooking/${user?.email}`).then(
+          fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/myBooking/${user?.email}`).then(
             (res) => res.json(),
           ),
       })

@@ -5,7 +5,7 @@ const useUser = () => {
     const { isLoading, error, data : userOne = [], refetch } = useQuery({
         queryKey: ['user'],
         queryFn: () =>
-          fetch('http://localhost:8000/users').then(
+          fetch('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/users').then(
             (res) => res.json(),
           ),
       })

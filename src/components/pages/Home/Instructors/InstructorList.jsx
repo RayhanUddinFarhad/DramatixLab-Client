@@ -6,8 +6,7 @@ const InstructorList = ({data}) => {
         <figure><img src={data.image} className='h-96  object-cover rounded-lg' alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">{data.name}</h2>
-          <p> Topic: {data.topic}</p>
-          <p>Students : {data.students}</p>
+          
           <p>Email : {data.email}</p>
           
         </div>

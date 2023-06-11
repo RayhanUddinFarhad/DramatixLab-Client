@@ -14,7 +14,7 @@ const MyPaymentHistory = () => {
 
 
 
-        fetch (`http://localhost:8000/paymentHistory/${user?.email}`)
+        fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/paymentHistory/${user?.email}`)
         .then (res => res.json())
         .then (data => setClasseInfo(data))
     },[])

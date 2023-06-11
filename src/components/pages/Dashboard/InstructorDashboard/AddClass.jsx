@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddClass = () => {
 
@@ -10,7 +11,7 @@ const AddClass = () => {
 
 
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
 
 
@@ -36,14 +37,32 @@ const AddClass = () => {
                 const newItem =  {image : imageURL, name : data.classname, instructor : data.InstructorName, email : data.InstructorEmail, availableSeats : parseFloat(data.seats), price : parseFloat(data.price), status : 'pending', totalEnrolled : 0} 
 
 
-                fetch (`http://localhost:8000/classes`, {
+                fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/classes`, {
                     method : 'POST',
                     headers: { 'Content-Type' : 'application/json'},
 
                     body: JSON.stringify(newItem)
                 })
                 .then (res => res.json())
-                .then (data => console.log(data))
+                .then (data => {console.log(data)
+
+                    if (data.insertedId) {
+
+
+
+                        Swal.fire(
+                            'Good job!',
+                            'Your new item has been inserted successfully! Wait for feedback',
+                            'success'
+                          )
+                    }
+
+
+                    reset()
+                
+                
+                
+                })
 
 
 

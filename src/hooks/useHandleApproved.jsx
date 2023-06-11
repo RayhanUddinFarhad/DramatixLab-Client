@@ -5,7 +5,7 @@ const useHandleApproved = () => {
     const { isLoading, error, data : classInfo , refetch } = useQuery({
         queryKey: ['classInfo' ],
         queryFn: () =>
-          fetch(`http://localhost:8000/adminClasses`)
+          fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/adminClasses`)
           .then(
             (res) => res.json(),
           ),

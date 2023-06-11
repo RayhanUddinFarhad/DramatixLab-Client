@@ -1,11 +1,12 @@
 import React from 'react';
 import useUser from '../../../../hooks/useUser';
 import useAdmin from '../../../../hooks/useAdmin';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
 
 
-    const [userOne] = useUser()
+    const [userOne, refetch] = useUser()
     const [isAdmin] = useAdmin()
     console.log(isAdmin);
 
@@ -15,12 +16,15 @@ const ManageUsers = () => {
     const handleMakeAdmin = (id) => {
 
 
-        fetch (`http://localhost:8000/users/admin/${id}`, {
+        fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/users/admin/${id}`, {
 
         method : 'PATCH'
         })
         .then (response => response.json())
-        .then (data => console.log(data))
+        .then (data => {console.log(data)
+        
+        
+        refetch()})
 
 
 
@@ -33,12 +37,35 @@ const ManageUsers = () => {
 
      const handleMakeInstructor = (id) => {
 
-        fetch (`http://localhost:8000/users/instructor/${id}`, {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to make this an instructor?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
 
-        method : 'PATCH'
-        })
-        .then (response => response.json())
-        .then (data => console.log(data))
+
+
+                fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/users/instructor/${id}`, {
+
+                method : 'PATCH'
+                })
+                .then (response => response.json())
+                .then (data => {console.log(data)
+                
+                refetch()})
+              Swal.fire(
+                'User Role updated',
+                'success'
+              )
+            }
+          })
+
+       
 
 
 

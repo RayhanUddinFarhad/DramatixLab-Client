@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
 
 
-                axios.post(`http://localhost:8000/jwt`, { email: currentUser.email })
+                axios.post(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/jwt`, { email: currentUser.email })
                     .then(data => {
                         console.log(data.data.token);
                         localStorage.setItem('access_token', data.data.token)

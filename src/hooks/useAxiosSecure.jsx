@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:8000', 
+    baseURL: 'https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app', 
   });
 
 const useAxiosSecure = () => {

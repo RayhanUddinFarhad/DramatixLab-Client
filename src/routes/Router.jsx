@@ -92,7 +92,7 @@ import StudentRoute from './StudentRoute';
           },
           {
             path : 'payment/:id',
-            loader : ({params}) => fetch (`http://localhost:8000/dashboard/payment/${params.id}`),
+            loader : ({params}) => fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/dashboard/payment/${params.id}`),
             element : <Payment></Payment>
           },
 

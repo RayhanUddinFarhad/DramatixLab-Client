@@ -5,17 +5,7 @@ import { useForm } from 'react-hook-form';
 
 const ManageClass = () => {
 
-  // const [classes, setClasses] = useState([])
-
-
-
-
-  // useEffect(() => {
-
-  //   fetch(`http://localhost:8000/classes`)
-  //     .then(res => res.json())
-  //     .then(data => setClasses(data))
-  // }, [])
+  
 
 
   const [classInfo, refetch] = useHandleApproved()
@@ -32,7 +22,7 @@ const ManageClass = () => {
 
 
 
-    fetch(`http://localhost:8000/approved/${id}`, {
+    fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/approved/${id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
@@ -51,13 +41,17 @@ const ManageClass = () => {
   const handleDeny = (id) => {
 
 
-    fetch(`http://localhost:8000/deny/${id}`, {
+    fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/deny/${id}`, {
       method: 'PATCH'
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {console.log(data)
+      
+      
+      
+        refetch()})
 
-    refetch()
+    
 
 
     setDisabled(true)
@@ -88,7 +82,7 @@ const ManageClass = () => {
     console.log(message);
 
     if (feedbackId) {
-      fetch(`http://localhost:8000/sendFeedback/${feedbackId}`, {
+      fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/sendFeedback/${feedbackId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

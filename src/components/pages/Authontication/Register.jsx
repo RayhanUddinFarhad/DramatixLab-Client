@@ -68,7 +68,7 @@ const Register = () => {
                 }
 
 
-                axios.post('http://localhost:8000/users', data)
+                axios.post('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/users', data)
                     .then(function (response) {
                         console.log(response);
                         reset()

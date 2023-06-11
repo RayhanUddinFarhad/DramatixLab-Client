@@ -5,7 +5,7 @@ const useIntructors = () => {
     const { isLoading, error, data : instructor = [], refetch } = useQuery({
         queryKey: ['instructor'],
         queryFn: () =>
-          fetch('http://localhost:8000/instructors').then(
+          fetch('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/popularInstructors').then(
             (res) => res.json(),
           ),
       })

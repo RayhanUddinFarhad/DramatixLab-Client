@@ -26,7 +26,7 @@ const MyClass = ({data}) => {
     
     
     
-            fetch (`http://localhost:8000/myBooking/${id}`, {
+            fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/myBooking/${id}`, {
     
             method : 'DELETE',
             })

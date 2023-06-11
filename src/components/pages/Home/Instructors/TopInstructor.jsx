@@ -68,7 +68,7 @@ const TopInstructor = () => {
 
 
                 {
-                    instructor && instructor.map(data => <InstructorList data={data}></InstructorList>)
+                    instructor && instructor.slice(0,6).map(data => <InstructorList data={data}></InstructorList>)
                 }
             </div>
 
