@@ -52,6 +52,8 @@ const Dashboard = () => {
               ) : Isinstructor ? (
                 <>
                   <li>
+                  <h1 className='text-3xl font-bold'>Hello Instructor,</h1>
+
                     <Link to="/dashboard/addClass">Add A class</Link>
                   </li>
                   <li>
@@ -60,6 +62,7 @@ const Dashboard = () => {
                 </>
               ) : IsStudent ? (
                 <> 
+                <h1>Hello Student, </h1>
                   <li>
                     <Link to="/dashboard/myClass">My Selected Class</Link>
                   </li>

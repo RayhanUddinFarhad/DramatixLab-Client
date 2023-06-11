@@ -38,7 +38,9 @@ const InstructorMyClass = () => {
               <th>Instructor Info</th>
               <th>Available Seats</th>
               <th>Price</th>
+              <th>Total Enrolled</th>
               <th>Status</th>
+              <th>Feedback</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -76,12 +78,15 @@ const InstructorMyClass = () => {
                       </td>
                       <td>{data.availableSeats}</td>
                       <td>{data.price}</td>
+                      <td>{data.totalEnrolled}</td>
                       <td>{data.status}</td>
                       <td>
 
 
                        {data.status === 'approved' || data.status === 'pending' || data.feedback}
                       </td>
+                      <td className='btn btn-primary'>Update</td>
+
 
 
 

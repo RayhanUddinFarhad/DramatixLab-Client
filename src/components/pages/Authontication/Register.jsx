@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import axios from 'axios';
@@ -11,6 +11,7 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [error, errorMessage] = useState('')
     const { user, signUp, googleLogin } = useContext(AuthContext)
+    const navigate = useNavigate()
     console.log(user);
 
 
@@ -55,6 +56,9 @@ const Register = () => {
                     photoURL: photo
                 })
                 console.log(registered);
+
+
+                navigate('/')
 
 
 

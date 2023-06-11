@@ -94,9 +94,9 @@ const ManageUsers = () => {
 
                                         </td>
                                         <td>{userInfo.role}</td>
-                                        <th>
-                                            <button onClick={() => handleMakeAdmin (userInfo._id)} className="button-primary">Make Admin</button>
-                                            <button onClick={() => handleMakeInstructor(userInfo._id)} className="button-primary">Make Instructor</button>
+                                        <th className='flex'>
+                                            <button onClick={() => handleMakeAdmin (userInfo._id)} className={` ${userInfo.role === 'admin' ? 'btn btn-disabled' : 'button-primary' }`}>Make Admin</button>
+                                            <button onClick={() => handleMakeInstructor(userInfo._id)} className={` ${userInfo.role === 'instructor' ? ' btn btn-disabled' : 'button-primary' }`}>Make Instructor</button>
                                         </th>
                                     </tr>
                                 )

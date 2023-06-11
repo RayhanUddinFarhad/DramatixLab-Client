@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AllClass from './AllClass';
 import { FaChessKing } from 'react-icons/fa';
 import useClasses from '../../../../hooks/useClasses';
+import usePopularClasses from '../../../../hooks/usePopularClasses';
 
 const PopularClasses = () => {
 
@@ -73,7 +74,7 @@ const PopularClasses = () => {
     // }, [])
 
 
-    const [classes] = useClasses()
+    const [popularClasses] = usePopularClasses()
 
 
 
@@ -99,7 +100,7 @@ const PopularClasses = () => {
 
                 {
 
-                    classes.map(data => <AllClass data={data}></AllClass>)
+                    popularClasses && popularClasses.slice(0, 6).map(data => <AllClass data={data}></AllClass>)
                 }
             </div>
 

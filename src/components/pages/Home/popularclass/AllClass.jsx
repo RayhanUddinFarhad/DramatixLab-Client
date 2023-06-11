@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import useBooking from '../../../../hooks/useBooking';
 import useAdmin from '../../../../hooks/useAdmin';
 import useInstructor from '../../../../hooks/useInstructor';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
@@ -17,6 +18,9 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
   const [Isinstructor] = useInstructor()
 
   const [disable, setDisabled] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation();
+
 
 
 
@@ -89,14 +93,42 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
   const handleBookings = (id) => {
 
 
+   if (user) {
     axios.post('http://localhost:8000/myBooking', item)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    console.log(id);
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  console.log(id);
+
+
+
+
+    
+   }
+
+   else {
+
+    Swal.fire({
+      title: 'LogIn now to select this class!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Log In Now'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        navigate('/logIn', {state: {from: location}})
+       
+      }
+    })
+   }
+
+
+  
 
 
 
@@ -110,12 +142,12 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
           <p> Instructor: {data.instructor}</p>
           <p>Available Seats : {data.availableSeats}</p>
           <p>Price : ${data.price}</p>
-          <p>Total Enrolled : {data.totalEnrolled}</p>
+          <p>Total Student  & enrolled : {data.totalEnrolled}</p>
 
 
           {
 
-            selectbutton && <button onClick={() => handleBookings(data._id)}  className={`${isAdmin?.admin || Isinstructor?.instructor || data.availableSeats <= 0 ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
+            selectbutton && <button onClick={() => handleBookings(data._id)}  className={`${isAdmin || Isinstructor || data.availableSeats <= 0 ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
           }
 
           {
