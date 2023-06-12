@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaBars, FaMoon, FaSun } from 'react-icons/fa';
 import { HiBars3, HiXMark } from "react-icons/hi2";
@@ -9,6 +9,7 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const navigate = useNavigate()
     const handleMenuToggle = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -20,6 +21,7 @@ const Navbar = () => {
 
         logOut()
             .then(res => {
+                navigate ('/')
 
             })
 
