@@ -121,10 +121,15 @@ const CheckOut = ({price, data}) => {
             image : data.data.image,
             name : data.data.name,
             price : data.data.price,
-            email : user.email
+            email : user.email,
+            transactionId : paymentIntent.id,
+            
+            
 
 
         }
+
+        console.log(paymentIntent.id);
 
         setsuccess(paymentIntent.id)
 
