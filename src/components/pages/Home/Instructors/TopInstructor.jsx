@@ -67,7 +67,7 @@ const TopInstructor = () => {
 
             </div>
 
-            <div className='grid lg:grid-cols-3 gap-5'>
+            <div className='grid lg:grid-cols-3 gap-5 w-full mx-auto'>
 
 
 

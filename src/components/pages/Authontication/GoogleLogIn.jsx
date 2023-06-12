@@ -30,7 +30,7 @@ const GoogleLogIn = () => {
 
                 const data = {
                     name: loggedInUser.displayName, image: loggedInUser.photoURL, email: loggedInUser.email,
-                    role : 'user'
+                    role: 'student'
                 }
 
 

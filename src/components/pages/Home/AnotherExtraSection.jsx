@@ -6,15 +6,14 @@ const AnotherExtraSection = () => {
         <div className='lg:flex space-x-5'>
 
 
-            <img className='rounded-2xl lg:w-9/12' src="https://d3s3zh7icgjwgd.cloudfront.net/AcuCustom/Sitename/DAM/248/Into-The-Woods-directed-by-Nona-Shepphard-RADA-Photo-Linda-_Standard.jpg" alt="" />
-
+<iframe className='w-full lg:h-[500px] rounded-lg' src="https://www.youtube.com/embed/GGl9Wri70aQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div className='space-y-5'>
 
 
 
                 <p className='text-red-500 font-bold'>About Us ----------</p>
 
-                <h1 className='text-4xl font-bold'>Welcome To the DramatixLab</h1>
+                <h1 className='text-4xl font-bold'>Welcome To the DramatixLab! Let's watch a  sample class</h1>
                 <p>Discover the magic of drama and theatre at DramatixLab. Unleash your creativity through engaging programs, experienced instructors, and a supportive community. Let your imagination take center stage!</p>
 
 

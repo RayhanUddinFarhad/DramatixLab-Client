@@ -6,6 +6,7 @@ import TopInstructor from './Instructors/TopInstructor';
 import RocketScrollAnimation from '../../shared/RocketScrollAnimation';
 import PerformanceShowCase from '../../shared/PerformanceShowcase'
 import AnotherExtraSection from './AnotherExtraSection';
+import SampleClass from './SampleClass';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
         <div className='space-y-10'>
 
 <Banner></Banner>
+
 <PopularClasses></PopularClasses>
 
 <AnotherExtraSection></AnotherExtraSection>

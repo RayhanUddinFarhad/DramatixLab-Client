@@ -145,8 +145,13 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
   }
   return (
     <div>
-      <div className= {`card w-96  shadow-xl text-base-content h-full ${data.availableSeats <= 0 ? 'bg-red-600' : 'bg-base-200'}`}>
-        <figure><img src={data.image} alt="Shoes" /></figure>
+      <div className= {`card w-96  shadow text-base-content h-full relative ${data.availableSeats <= 0 ? 'bg-red-600' : 'bg-base-200'}`}>
+        <figure><img src={data.image} alt="Shoes" />
+        
+</figure>
+<p className='badge badge-info text-white absolute right-3 top-2'>${data.price}</p>
+
+
         <div className="card-body">
           <h2 className="card-title">{data.name}</h2>
           <p> Instructor: {data.instructor}</p>
