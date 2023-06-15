@@ -17,9 +17,9 @@ const Payment = () => {
     const stripePromise = loadStripe('pk_test_51NHLRyEvzSccsuMSkox8xjZ1nvH4NaXBqA2ihNjQL9S2u5T8Owszz0Zcu5JplCimK1PvkEbzw1dwvvHzbTMbLWWS00xhRLoMdj');
 
     return (
-        <div className=''>
+        <div className='mx-auto my-5'>
 
-           <p className='text-base-content'> Pay Now : {data?.data.price}</p>
+           <p className='text-base-content text-3xl font-bold '> Pay Now : {data?.data.price}</p>
 
 
             <Elements  stripe={stripePromise}>
