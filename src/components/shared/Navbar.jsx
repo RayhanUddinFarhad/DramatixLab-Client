@@ -21,7 +21,7 @@ const Navbar = () => {
 
         logOut()
             .then(res => {
-                navigate ('/')
+                navigate('/')
 
             })
 
@@ -40,31 +40,31 @@ const Navbar = () => {
 
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-      );
-    
-      // update state on toggle
-      const handleToggle = (e) => {
+    );
+
+    // update state on toggle
+    const handleToggle = (e) => {
         if (e.target.checked) {
-          setTheme("dark");
+            setTheme("dark");
         } else {
-          setTheme("light");
+            setTheme("light");
         }
-      };
-    
-      // set theme state in localstorage on mount & also update localstorage on state change
-      useEffect(() => {
+    };
+
+    // set theme state in localstorage on mount & also update localstorage on state change
+    useEffect(() => {
         localStorage.setItem("theme", theme);
         const localTheme = localStorage.getItem("theme");
         // add custom data-theme attribute to html tag required to update theme using DaisyUI
         document.querySelector("html").setAttribute("data-theme", localTheme);
-      }, [theme]);
+    }, [theme]);
     return (
-      
 
 
 
-        <div className='bg-base-500  text-base-500  px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
-            <div className='relative flex items-center justify-between'>
+
+        <div className='bg-gray-900 text-white    px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen md:px-24 lg:px-8'>
+            <div className='relative  flex items-center justify-between'>
                 {/* Logo Section */}
                 <Link to='/' className='inline-flex items-center'>
                     <h1 className="text-3xl font-bold">
@@ -103,22 +103,22 @@ const Navbar = () => {
                             </Link>
                         )}
 
-<div className="flex-none">
-        {/* Toggle button here */}
-        <button className="btn btn-square btn-ghost">
-          <label className="swap swap-rotate w-12 h-12">
-          <input
-              type="checkbox"
-              onChange={handleToggle}
-              // show toggle image based on localstorage theme
-              checked={theme === "light" ? false : true}
-            />            {/* light theme sun image */}
-            <FaSun  alt="light" className="w-8 h-8 swap-on" />
-            {/* dark theme moon image */}
-            <FaMoon  alt="dark" className="w-8 h-8 swap-off" />
-          </label>
-        </button>
-      </div>
+                    <div className="flex-none">
+                        {/* Toggle button here */}
+                        <button className="btn btn-square btn-ghost">
+                            <label className="swap swap-rotate w-12 h-12">
+                                <input
+                                    type="checkbox"
+                                    onChange={handleToggle}
+                                    // show toggle image based on localstorage theme
+                                    checked={theme === "light" ? false : true}
+                                />            {/* light theme sun image */}
+                                <FaSun alt="light" className="w-8 h-8 swap-on" />
+                                {/* dark theme moon image */}
+                                <FaMoon alt="dark" className="w-8 h-8 swap-off" />
+                            </label>
+                        </button>
+                    </div>
 
 
 
@@ -139,7 +139,7 @@ const Navbar = () => {
                     </button>
                     {isMenuOpen && (
                         <div className='absolute top-0 left-0 w-full z-10'>
-                            <div className='p-5 bg-white border rounded shadow-sm'>
+                            <div className='p-5 bg-gray-950 border rounded shadow-sm'>
                                 {/* Logo & Button section */}
                                 <div className='flex items-center justify-between mb-4'>
                                     <div>

@@ -93,63 +93,62 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
   const handleBookings = (id) => {
 
 
-   if (user) {
-    axios.post('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/myBooking', item)
-    .then(function (response) {
-      console.log(response.data.insertedId);
+    if (user) {
+      axios.post('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/myBooking', item)
+        .then(function (response) {
 
-      if (response.data.insertedId) {
+          if (response.data.insertedId) {
 
 
-        Swal.fire(
-          'Good job!',
-          'Your Class has been added to your class',
-          'success'
-        )
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  console.log(id);
-
+            Swal.fire(
+              'Good job!',
+              'Your Class has been added to your class',
+              'success'
+            )
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(id);
 
 
 
-    
-   }
-
-   else {
-
-    Swal.fire({
-      title: 'LogIn now to select this class!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Log In Now'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-        navigate('/logIn', {state: {from: location}})
-       
-      }
-    })
-   }
 
 
-  
+    }
+
+    else {
+
+      Swal.fire({
+        title: 'LogIn now to select this class!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Log In Now'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          navigate('/logIn', { state: { from: location } })
+
+        }
+      })
+    }
+
+
+
 
 
 
   }
   return (
     <div>
-      <div className= {`card w-96  shadow text-base-content h-full relative ${data.availableSeats <= 0 ? 'bg-red-600' : 'bg-base-200'}`}>
+      <div className={`card w-96  shadow text-base-content h-full relative ${data.availableSeats <= 0 ? 'bg-red-600' : 'bg-base-200'}`}>
         <figure><img src={data.image} alt="Shoes" />
-        
-</figure>
-<p className='badge badge-info text-white absolute right-3 top-2'>${data.price}</p>
+
+        </figure>
+        <p className='badge badge-info text-white absolute right-3 top-2'>${data.price}</p>
 
 
         <div className="card-body">
@@ -162,7 +161,7 @@ const AllClass = ({ data, selectbutton, studentDashboar }) => {
 
           {
 
-            selectbutton && <button onClick={() => handleBookings(data._id)}  className={`${isAdmin || Isinstructor || data.availableSeats <= 0 ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
+            selectbutton && <button onClick={() => handleBookings(data._id)} className={`${isAdmin || Isinstructor || data.availableSeats <= 0 ? 'btn btn-disabled' : 'button-primary'}`}>select now</button>
           }
 
           {

@@ -4,6 +4,7 @@ import { FaChessKing } from 'react-icons/fa';
 import useClasses from '../../../../hooks/useClasses';
 import usePopularClasses from '../../../../hooks/usePopularClasses';
 import { Fade } from 'react-awesome-reveal';
+import OneInPopular from './OneInPopular';
 
 const PopularClasses = () => {
 
@@ -86,27 +87,23 @@ const PopularClasses = () => {
 
 
     return (
-        <div>
+        <div className='bg-gray-900 p-10 rounded-lg'>
 
-<div cascade className='text-center mx-auto my-10'>
+            <div cascade className='text-center mx-auto my-10 '>
+                <p className='text-yellow-400 text-lg'>Courses</p>
 
-<Fade cascade  className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>
-
-    <p>Popular</p>
-    <p>Classes</p>
-</Fade>
+                <h1 className='text-white text-3xl font-bold '>Popular Classes</h1>
 
 
+            </div>
 
-</div>
-
-            <div className='grid lg:grid-cols-3 gap-5'>
+            <div className='grid  lg:grid-cols-3 gap-2'>
 
 
 
                 {
 
-                    popularClasses && popularClasses.slice(0, 6).map(data => <AllClass data={data}></AllClass>)
+                    popularClasses && popularClasses.slice(0, 6).map((data) => <OneInPopular data={data} key={data._id}></OneInPopular>)
                 }
             </div>
 

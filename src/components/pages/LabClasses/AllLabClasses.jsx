@@ -17,7 +17,7 @@ const AllLabClasses = () => {
         <div className='grid lg:grid-cols-3 gap-5'>
             {
 
-                allClass && allClass.map (data => <AllClass data={data} selectbutton={selectedbutton}></AllClass>)
+                allClass && allClass.map (data => <AllClass data={data} key={data._id} selectbutton={selectedbutton}></AllClass>)
             }
         </div>
     );

@@ -8,7 +8,6 @@ const ManageUsers = () => {
 
     const [userOne, refetch] = useUser()
     const [isAdmin] = useAdmin()
-    console.log(isAdmin);
 
 
 

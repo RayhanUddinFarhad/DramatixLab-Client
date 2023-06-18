@@ -12,7 +12,6 @@ const Register = () => {
     const [error, errorMessage] = useState('')
     const { user, signUp, googleLogin } = useContext(AuthContext)
     const navigate = useNavigate()
-    console.log(user);
 
 
    
@@ -41,7 +40,6 @@ const Register = () => {
         const { name, Email, password, photo } = data
 
 
-        console.log(name, Email, password, photo)
 
 
         signUp(Email, password)
@@ -55,7 +53,6 @@ const Register = () => {
                     displayName: name,
                     photoURL: photo
                 })
-                console.log(registered);
 
 
                 navigate('/')

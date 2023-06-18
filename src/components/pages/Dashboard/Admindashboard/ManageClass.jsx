@@ -17,7 +17,6 @@ const ManageClass = () => {
 
 
   const handleApproved = (id) => {
-    console.log(id);
 
 
 
@@ -27,7 +26,6 @@ const ManageClass = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
 
         refetch()
 
@@ -83,7 +81,6 @@ const ManageClass = () => {
   const SendFeedback = (event) => {
     event.preventDefault();
     const message = event.target.feedback.value;
-    console.log(message);
 
     if (feedbackId) {
       fetch(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/sendFeedback/${feedbackId}`, {
@@ -140,7 +137,7 @@ const ManageClass = () => {
 
             {
 
-              classInfo && classInfo.map(data => {
+              classInfo && classInfo.map((data) => {
 
 
                 return (

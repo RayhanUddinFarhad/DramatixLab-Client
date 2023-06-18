@@ -5,20 +5,21 @@ import { AuthContext } from '../providers/AuthProvider';
 const useRecentUser = () => {
 
 
-    const {user}  = useContext(AuthContext)
-    const { isLoading, error, data : recentUser , refetch } = useQuery({
-        queryKey: ['recentUser', user?.email],
-        queryFn: () =>
-          fetch(`http://localhost:8000/users/${user?.email}`).then(
-            (res) => res.json(),
-          ),
-    
-    
-          
-      })
+  const { user } = useContext(AuthContext)
+  const { isLoading, error, data: recentUser, refetch } = useQuery({
+    queryKey: ['recentUser', user?.email],
+    queryFn: () =>
+      fetch(`https://dramatix-lab-server.vercel.app/users/${user?.email}`)
+        .then(
+          (res) => res.json(),
+        ),
 
 
-      return [recentUser, refetch]
+
+  })
+
+
+  return [recentUser, refetch]
 };
 
 export default useRecentUser;

@@ -9,7 +9,6 @@ const MyBooking = () => {
 
 
     const [booking] = useBooking()
-    console.log(booking);
     const [studentDashboar, setStudentDashboar] =  useState(true)
     return (
         <div className='grid grid-cols-2 gap-5'>
@@ -18,7 +17,7 @@ const MyBooking = () => {
 
             {
 
-                booking && booking.map (data => <MyClass data = {data}></MyClass>)
+                booking && booking.map ((data) => <MyClass key={data._id} data = {data}></MyClass>)
                 
             }
             

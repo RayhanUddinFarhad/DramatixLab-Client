@@ -36,10 +36,8 @@ const GoogleLogIn = () => {
 
                 axios.post('https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/users', data)
                     .then(function (response) {
-                        console.log(response);
                     })
                     .catch(function (error) {
-                        console.log(error);
                     });
             })
 

@@ -10,7 +10,7 @@ const Instructors = () => {
         <div className='grid lg:grid-cols-3 gap-5'>
            {
 
-            instructor.map (data => <InstructorList data={data}></InstructorList>)
+            instructor.map (data => <InstructorList data={data} key={data._id}></InstructorList>)
            }
         </div>
     );

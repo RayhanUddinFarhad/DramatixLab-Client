@@ -12,7 +12,7 @@ const InstructorMyClass = () => {
     useEffect(() => { 
 
 
-        fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/instructorClass/farhad@gmail.com`)
+        fetch (`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/instructorClass/${user.email}`)
         .then (res => res.json())
         .then (data => setMyClass(data))
 

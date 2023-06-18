@@ -23,18 +23,15 @@ const LogIn = () => {
 
     const onSubmit = data => {
         
-        console.log(data)
 
 
         const {email, password} = data
 
-        console.log(email, password);
         logIn (email, password)
         .then (res => {
 
             const user = res.user
 
-            console.log(user);
             navigate(from, { replace: true });
 
             reset()

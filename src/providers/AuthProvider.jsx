@@ -82,7 +82,6 @@ const AuthProvider = ({ children }) => {
 
                 axios.post(`https://dramatix-lab-server-3hg5zxg3j-rayhanuddinfarhad.vercel.app/jwt`, { email: currentUser.email })
                     .then(data => {
-                        console.log(data.data.token);
                         localStorage.setItem('access_token', data.data.token)
                         setLoading(false)
                     })

@@ -8,15 +8,15 @@ const Main = () => {
     return (
         <div>
 
-<Navbar></Navbar>
-            <div className='mx-auto  lg:p-1 lg:max-w-[1280px] md:min-h-[calc(100vh-341px)]'>
+            <Navbar></Navbar>
+            <div className=' md:min-h-[calc(100vh-341px)] p-2 dark:bg-gray-800 '>
 
-            <Outlet></Outlet>
+                <Outlet></Outlet>
 
             </div>
 
             <Footer></Footer>
-            
+
         </div>
     );
 };

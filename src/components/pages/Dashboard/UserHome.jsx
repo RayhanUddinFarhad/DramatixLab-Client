@@ -27,9 +27,8 @@ const UserHome = () => {
       gender: data.Gender,
     };
   
-    console.log(updatedData);
   
-    fetch(`http://localhost:8000/users/${recentUser?.email}`, {
+    fetch(`https://dramatix-lab-server.vercel.app/users/${recentUser?.email}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedData),

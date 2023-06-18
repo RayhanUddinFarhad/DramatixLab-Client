@@ -16,8 +16,7 @@ const CheckOut = ({ price, data }) => {
 
   const { user } = useContext(AuthContext)
   const [booking, refetch] = useBooking()
-  console.log(booking);
-  console.log(data);
+  
   const [allClass] = useAllClass()
 
 
@@ -105,7 +104,6 @@ const CheckOut = ({ price, data }) => {
 
     setProcessing(false)
 
-    console.log(paymentIntent);
 
 
     if (paymentIntent.status === 'succeeded') {

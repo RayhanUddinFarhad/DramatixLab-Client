@@ -3,6 +3,8 @@ import AllClass from '../popularclass/AllClass';
 import InstructorList from './InstructorList';
 import useIntructors from '../../../../hooks/useIntructors';
 import { Fade } from 'react-awesome-reveal';
+import InstructorInfoPopular from './InstructorInfoPopular';
+import TopInstructorInfo from '../../../shared/TopInstructorInfo';
 
 const TopInstructor = () => {
 
@@ -50,31 +52,25 @@ const TopInstructor = () => {
 
 
     return (
-        <div>
+        <div className='bg-gray-900 p-10 rounded-xl'>
 
 
 
 
-            <div cascade className='text-center mx-auto my-10'>
+            <div cascade className='text-center mx-auto my-10 '>
+                <p className='text-yellow-400 text-lg'>Meet Our Staffs</p>
 
-                <Fade cascade  className='text-3xl text-base-content font-extrabold border-b lg:mx-96 border-red-400 pb-2'>
-
-                    <p>Top</p>
-                    <p>Instructors</p>
-                </Fade>
-
+                <h1 className='text-white text-3xl font-bold '>Excellent Instructor</h1>
 
 
             </div>
 
-            <div className='grid lg:grid-cols-3 gap-5 w-full mx-auto'>
+            <div className=' w-full mx-auto '>
 
 
 
 
-                {
-                    instructor && instructor.slice(0,6).map(data => <InstructorList data={data}></InstructorList>)
-                }
+                <TopInstructorInfo data={instructor}></TopInstructorInfo>
             </div>
 
 
