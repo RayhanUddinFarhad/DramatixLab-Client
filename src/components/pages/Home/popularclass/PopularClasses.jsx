@@ -97,7 +97,7 @@ const PopularClasses = () => {
 
             </div>
 
-            <div className='grid  lg:grid-cols-3 gap-2'>
+            <div   className='grid  lg:grid-cols-3 gap-2'>
 
 
 

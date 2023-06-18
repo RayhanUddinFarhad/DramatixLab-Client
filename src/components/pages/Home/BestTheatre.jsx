@@ -5,10 +5,11 @@ const BestTheatre = () => {
     return (
         <div className='lg:flex lg:space-x-3 items-center bg-gray-900 text-white p-5'>
 
-            <img className='rounded-t-full rounded-s-full lg:w-[50%]' src="https://worldoftheatreandart.com/wp-content/uploads/2016/08/Reasons-to-Join-Theatre-Group-1.jpg" alt="" />
+            <img data-aos="fade-right" data-aos-duration="2000"
+                className='rounded-t-full rounded-s-full lg:w-[50%]' src="https://worldoftheatreandart.com/wp-content/uploads/2016/08/Reasons-to-Join-Theatre-Group-1.jpg" alt="" />
 
 
-            <div className='space-y-5'>
+            <div className='space-y-5'  data-aos="fade-left" data-aos-duration="2000">
 
 
                 <p className='text-sm  text-yellow-300 font-bold '>Who We Are</p>
@@ -63,7 +64,7 @@ const BestTheatre = () => {
                         </div>
 
                         <h1 className='text-2xl font-bold '>Honors classes
-</h1>
+                        </h1>
                         <p>With a balance of self-directed play and thoughtful teacher</p>
 
 
@@ -79,7 +80,7 @@ const BestTheatre = () => {
                         </div>
 
                         <h1 className='text-2xl font-bold '>Advance Placement Courses
-</h1>
+                        </h1>
                         <p>This program is available for all children enrolled in elementary</p>
 
 

@@ -4,7 +4,7 @@ import './PopularClass.css'
 
 const OneInPopular = ({ data }) => {
     return (
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1000">
             <div className="container m-0  ">
 
 
@@ -23,7 +23,7 @@ const OneInPopular = ({ data }) => {
 
                         <div className="content ">
 
-                            <h2 className="text-xl font-bold dark:text-white">{data.name}</h2>
+                            <h2 className="text-xl font-bold text-black">{data.name}</h2>
                             <p className='text-base'> Instructor: {data.instructor}</p>
                             <p>Available Seats : {data.availableSeats}</p>
                             <p>Price : ${data.price}</p>

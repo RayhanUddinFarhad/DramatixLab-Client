@@ -6,7 +6,7 @@ import PageCompo from '../components/shared/PageCompo';
 
 const Main = () => {
     return (
-        <div>
+        <div className='overflow-x-hidden'>
 
             <Navbar></Navbar>
             <div className=' md:min-h-[calc(100vh-341px)] p-2 dark:bg-gray-800 '>

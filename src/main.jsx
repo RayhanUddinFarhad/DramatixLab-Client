@@ -5,6 +5,10 @@ import './index.css'
 import { router } from './routes/Router.jsx'
 import { RouterProvider } from 'react-router-dom'
 import AuthProvider from './providers/AuthProvider.jsx'
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 import {
   QueryClient,
   QueryClientProvider,

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaBars, FaMoon, FaSun } from 'react-icons/fa';
 import { HiBars3, HiXMark } from "react-icons/hi2";
+import ActiveLink from './ActiveLink';
 
 
 const Navbar = () => {
@@ -76,31 +77,31 @@ const Navbar = () => {
                 {/* Nav Items Section */}
                 <ul className='items-center hidden space-x-8 lg:flex'>
                     <li>
-                        <Link to="/">Home</Link>
+                        <ActiveLink to="/">Home</ActiveLink>
                     </li>
                     <li>
-                        <Link to="/instructor">Instructor</Link>
+                        <ActiveLink to="/instructor">Instructor</ActiveLink>
                     </li>
                     <li>
-                        <Link to="/classes">Classes</Link>
+                        <ActiveLink to="/classes">Classes</ActiveLink>
                     </li>
                     {user ?
                         <>
-                            <li>          <Link to="/dashboard">Dashboard</Link>
+                            <li>          <ActiveLink to="/dashboard">Dashboard</ActiveLink>
                             </li>
 
                             <p className="hidden lg:block">{user?.displayName}</p>
                             <div className="w-10 rounded-full hidden lg:block">
-                                <img className="rounded-full" src={user?.photoURL} alt="" />
+                                <img className="rounded-full  object-cover" src={user?.photoURL} alt="" />
                             </div>
                             <button onClick={handleLogOut} className="button-primary">
                                 Log Out
                             </button>
                         </>
                         : (
-                            <Link className="button-primary" to="/logIn">
+                            <ActiveLink className="button-primary" to="/logIn">
                                 <button>Log In</button>
-                            </Link>
+                            </ActiveLink>
                         )}
 
                     <div className="flex-none">
@@ -143,12 +144,12 @@ const Navbar = () => {
                                 {/* Logo & Button section */}
                                 <div className='flex items-center justify-between mb-4'>
                                     <div>
-                                        <Link to='/' className='inline-flex items-center'>
+                                        <ActiveLink to='/' className='inline-flex items-center'>
                                             <h1 className="text-3xl font-bold">
                                                 <span className="text-orange-400">Dramatix</span>
                                                 <span className="text-[#9875ff]">Lab</span>
                                             </h1>
-                                        </Link>
+                                        </ActiveLink>
                                     </div>
                                     {/* Dropdown menu close button */}
                                     <div>
@@ -165,31 +166,31 @@ const Navbar = () => {
                                 <nav>
                                     <ul className='space-y-4'>
                                         <li>
-                                            <Link to="/">Home</Link>
+                                            <ActiveLink to="/">Home</ActiveLink>
                                         </li>
                                         <li>
-                                            <Link to="/instructor">Instructor</Link>
+                                            <ActiveLink to="/instructor">Instructor</ActiveLink>
                                         </li>
                                         <li>
-                                            <Link to="/classes">Classes</Link>
+                                            <ActiveLink to="/classes">Classes</ActiveLink>
                                         </li>
                                         {user ?
                                             <>
-                                                <li>          <Link to="/dashboard">Dashboard</Link>
+                                                <li>          <ActiveLink to="/dashboard">Dashboard</ActiveLink>
                                                 </li>
 
                                                 <p className=" lg:block">{user?.displayName}</p>
                                                 <div className="w-10 rounded-full  lg:block">
-                                                    <img className="rounded-full" src={user?.photoURL} alt="" />
+                                                    <img className="rounded-full w-32 h-32" src={user?.photoURL} alt="" />
                                                 </div>
                                                 <button onClick={handleLogOut} className="button-primary">
                                                     Log Out
                                                 </button>
                                             </>
                                             : (
-                                                <Link className="button-primary" to="/logIn">
+                                                <ActiveLink className="button-primary" to="/logIn">
                                                     <button>Log In</button>
-                                                </Link>
+                                                </ActiveLink>
                                             )}
                                     </ul>
                                 </nav>

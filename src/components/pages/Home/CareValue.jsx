@@ -2,9 +2,9 @@ import React from 'react';
 
 const CareValue = () => {
     return (
-        <div className='lg:flex items-center space-x-3 bg-gray-950 text-white p-10'>
+        <div  className='lg:flex items-center space-x-3 bg-gray-950 text-white p-10'>
 
-            <div className='w-[50%]'>
+            <div  data-aos="fade-right" data-aos-duration="1000" className='w-[50%]'>
 
 
 
@@ -13,7 +13,7 @@ const CareValue = () => {
                 <h1 className='text-3xl font-bold'>We're transforming summer learning experiences.</h1>
             </div>
 
-            <div className='grid lg:grid-cols-1 gap-5 w-[50%]'>
+            <div data-aos="fade-left" data-aos-duration="1000" className='grid lg:grid-cols-1 gap-5 w-[50%]'>
 
 
 

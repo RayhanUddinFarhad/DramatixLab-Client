@@ -90,10 +90,12 @@ const AuthProvider = ({ children }) => {
             else {
                 localStorage.removeItem('access_token')
             }
+            console.log(currentUser);
         })
 
 
         return () => {
+
 
 
             return unsubscribe()

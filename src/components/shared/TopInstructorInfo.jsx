@@ -18,7 +18,7 @@ const TopInstructorInfo = ({ data }) => {
     cssEase: "linear"
   };
   return (
-    <div className=' grid lg:grid-cols-3 gap-5' >
+    <div data-aos="zoom-in" data-aos-duration="2000" className=' grid lg:grid-cols-3 gap-5' >
       {
 
         data && data.slice(0, 6).map((data, index) => {

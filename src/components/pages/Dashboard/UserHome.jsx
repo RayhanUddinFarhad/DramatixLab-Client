@@ -5,6 +5,7 @@ import { FaEnvelope, FaHome, FaMars, FaPenAlt, FaPenFancy, FaPhoneAlt, FaUser, F
 import { useForm } from 'react-hook-form';
 import { useQuery } from '@tanstack/react-query';
 import useRecentUser from '../../../hooks/useRecentUser';
+import Swal from 'sweetalert2';
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_KEY;
 
@@ -36,6 +37,13 @@ const UserHome = () => {
       .then(res => res.json())
       .then(data => {console.log(data)
 
+
+        Swal.fire(
+          
+          'Profile updated successfully',
+          'success'
+        )
+
         refetch()
       
       
@@ -48,37 +56,7 @@ const UserHome = () => {
 
 
 
-  // const [recentUser, setRecentUserProile] = useState()
-
-
-
-  // useEffect(() => {
-
-  //   fetch(`http://localhost:8000/users/${user?.email}`, {
-
-  //     method: 'GET',
-
-  //     headers : {
-  //       'Content-Type': 'application/json'
-  //     },
-
-  //     body : JSON.stringify()
-
-
-
-
-
-
-
-
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => setRecentUserProile(data))
-
-
-
-
-  // }, [])
+  
 
 
 
